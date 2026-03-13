@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modifier le forfait - {{ forfait.nomForfait }}{% endblock %}
+
+{% block body %}
+<div class="home">
+
+  <!-- HERO -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-text">
+      <h1 class="hero-title">Modifier le forfait <span>{{ forfait.nomForfait }}</span></h1>
+      <p class="hero-desc">Modifiez les informations et les fonctionnalités de ce forfait.</p>
+    </div>
+  </section>
+
+  <section class="forfaits-section">
+    <h2 class="section-title">{{ forfait.nomForfait }}</h2>
+
+    {% for message in app.flashes('success') %}
+      <div class="flash-success">✅ {{ message }}</div>
+    {% endfor %}
+
+    <form method="POST" action="{{ path('app_forfait_modifier', {id: forfait.id}) }}">
+    <div class="forfaits-wrapper">
+      <table class="forfaits-table">
+
+        <!-- EN-TÊTE : champs nom / prix / durée éditables -->
+        <thead>
+          <tr>
+            <th class="th-label"></th>
+            <th class="th-plan" style="min-width: 220px;">
+            <label for="nomForfait" class="form-label">Nom du forfait</label>
+              <input type="text" name="nomForfait" value="{{ forfait.nomForfait }}" class="form-input" style="margin: 0.5rem 0; text-align:center;">
+              <div style="display:flex; gap:0.5rem; align-items:center; justify-content:center; margin-top:0.3rem;">
+              <label for="prix" class="form-label">Prix </label>
+                <input type="number" name="prix" value="{{ forfait.prix }}" step="0.01" min="0" class="form-input" style="width:80px; text-align:center;">
+                <span style="color:var(--gris); font-size:0.85rem;">€ /</span>
+                <select name="duree" id="duree" class="form-input" style="width:90px;">
+                    <option value="gratuit" {% if forfait.duree == 'gratuit' %}selected{% endif %}>gratuit</option>
+                    <option value="mois"    {% if forfait.duree == 'mois'    %}selected{% endif %}>mois</option>
+                    <option value="an"      {% if forfait.duree == 'an'      %}selected{% endif %}>an</option>
+                </select>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <!-- FONCTIONNALITÉS avec cases à cocher -->
+        <tbody>
+          {% set currentCategorie = '' %}
+          {% for cle, fonc in fonctionnalites %}
+            {% if fonc.categorie != currentCategorie %}
+              {% set currentCategorie = fonc.categorie %}
+              <tr class="category">
+                <td colspan="2">
+                  {% if currentCategorie == 'Proposer des services' %}🔧{% endif %}
+                  {% if currentCategorie == 'Répondre aux demandes' %}🙋{% endif %}
+                  {% if currentCategorie == 'Profil utilisateur' %}👤{% endif %}
+                  {% if currentCategorie == 'Assistance' %}🎧{% endif %}
+                  {{ currentCategorie }}
+                </td>
+              </tr>
+            {% endif %}
+            <tr>
+              <td>{{ fonc.label }}</td>
+              <td>
+                <label class="toggle-label">
+                  <input type="checkbox"
+                         name="fonc_{{ cle }}"
+                         class="toggle-checkbox"
+                         {% if cle in forfait.fonctionnalites %}checked{% endif %}>
+                  <span class="toggle-switch"></span>
+                </label>
+              </td>
+            </tr>
+          {% endfor %}
+
+          <!-- BOUTONS -->
+          <tr class="category"><td colspan="2"></td></tr>
+          <tr>
+            <td></td>
+            <td style="display:flex; gap:0.8rem; justify-content:center; padding: 1rem;">
+              <a href="{{ path('app_forfaits') }}" class="btn-table btn-annuler">← Annuler</a>
+              <button type="submit" class="btn-table btn-modifier">💾 Enregistrer</button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+    </form>
+  </section>
+
+</div>
+
+<script>
+  document.getElementById('duree').addEventListener('change', function() {
+    if (this.value === 'gratuit') {
+      document.querySelector('input[name="prix"]').value = '0';
+    }
+  });
+</script>
+{% endblock %}
+

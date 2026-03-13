@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="{{ asset('voisins_connectes_arrondi.png') }}">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar-floating">
+            <div class="navbar-links">
+                <img src="{{ asset('voisins_connectes_arrondi.png') }}" alt="Logo" class="logo">
+                <a href="/voisins_connecte/accueil" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Accueil</a>
+                <a href="/voisins_connecte/forfaits" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/forfaits' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Gestion des forfaits</a>
+                <a href="/voisins_connecte/gestion_publication" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/gestion_publication' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Gestion des publications</a>
+
+                <!-- Dropdown Validation -->
+                <div class="dropdown">
+                    <button class="nav-btn nav-btn--inactive dropdown-btn">Validation ▾</button>
+                    <div class="dropdown-menu">
+                        <a href="/voisins_connecte/demande_adhésion" class="dropdown-item">Demandes d'adhésion</a>
+                        <a href="/voisins_connecte/publication_demande_adhésion" class="dropdown-item">Demandes de publication</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>
