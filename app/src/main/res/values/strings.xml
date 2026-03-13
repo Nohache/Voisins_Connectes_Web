@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Voisins Connectés</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="results">Résultats</string>
+
+    <!-- Écran Principal (MainActivity) -->
+    <string name="welcome_message">Bonjour, Bertrand !</string>
+    <string name="subtitle_home">Trouvez de l\'aide à proximité</string>
+    <string name="search_hint">Rechercher un service...</string>
+    <string name="title_categories">Catégories</string>
+    <string name="title_recent_ads">Annonces récentes</string>
+
+    <!-- Catégories (Chips) -->
+    <string name="category_diy">Bricolage</string>
+    <string name="category_gardening">Jardinage</string>
+    <string name="category_lessons">Cours</string>
+    
+    <!-- Accessibilité (Optionnel mais recommandé) -->
+    <string name="content_desc_add_ad">Ajouter une annonce</string>
+    <string name="content_desc_search">Icône de recherche</string>
+
+    <!-- Bouton Inscription et Se Connecter -->
+    <string name="btn_register">Inscription</string>
+    <string name="btn_login">Connexion</string>
+</resources>
