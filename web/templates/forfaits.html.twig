@@ -14,104 +14,148 @@
   </section>
 
   {% for message in app.flashes('success') %}
-    <div class="flash-success" style="max-width:750px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+    <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
   {% endfor %}
 
-  <!-- TABLEAU -->
-  <section class="forfaits-section">
+  <!-- ══ CARTES (grands écrans) ══ -->
+  <section class="forfaits-cards-section forfaits-desktop-only">
+    <h2 class="section-title">Les forfaits disponibles</h2>
+    <p class="section-sub">Gérez les forfaits proposés aux membres de la plateforme.</p>
+    <a href="{{ path('app_forfait_ajouter') }}" class="btn-primary" style="display:inline-block; margin-bottom:2rem;">+ Ajouter un forfait</a>
+
+    <div class="forfaits-cards-grid">
+      {% if forfaits is empty %}
+        <p>Aucun forfait disponible.</p>
+      {% else %}
+        {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
+        {% for forfait in forfaits %}
+          {% set forfait_id = forfait.idForfait ?? forfait.id %}
+          {% set active = forfait.description|json_decode ?? [] %}
+
+          <div class="forfait-card {{ forfait.prix != '0.00' and forfait.prix != '0' ? 'forfait-card--premium' : '' }}">
+            <div class="forfait-card-header">
+              <div class="plan-badge {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}">
+                {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'Gratuit' : 'Payant' }}
+              </div>
+              <h2 class="forfait-card-title">{{ forfait.nomForfait }}</h2>
+              <div class="forfait-card-price">
+                {{ forfait.prix }} €
+                {% if forfait.prix != '0.00' and forfait.prix != '0' %}
+                  <span>/mois</span>
+                {% endif %}
+              </div>
+              <p class="forfait-card-desc">Description du forfait</p>
+            </div>
+
+            <div class="forfait-card-body">
+              {% for categorie in categories %}
+                <div class="forfait-feature-category">{{ categorie }}</div>
+                <ul class="forfait-features">
+                  {% for key, feature in fonctionnalites %}
+                    {% if feature.categorie == categorie %}
+                      <li>
+                        {% if key in active %}
+                          <span class="check">✔</span>
+                        {% else %}
+                          <span class="cross">✘</span>
+                        {% endif %}
+                        {{ feature.label }}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endfor %}
+            </div>
+
+            <div class="forfait-card-footer">
+              <a href="{{ path('app_forfait_modifier', {id: forfait_id}) }}" class="btn-table btn-modifier">✏️ Modifier</a>
+              <a href="{{ path('app_forfait_supprimer', {id: forfait_id}) }}"
+                 class="btn-table btn-supprimer"
+                 onclick="return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')">🗑️ Supprimer</a>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ══ TABLEAU (petits écrans) ══ -->
+  <section class="forfaits-section forfaits-mobile-only">
     <h2 class="section-title">Les forfaits disponibles</h2>
     <p class="section-sub">Aperçu des fonctionnalités incluses dans chaque forfait.</p>
+    <a href="{{ path('app_forfait_ajouter') }}" class="btn-primary" style="display:inline-block; margin-bottom:2rem;">➕ Ajouter un forfait</a>
 
     <div class="forfaits-wrapper">
-      <table class="forfaits-table">
-        <thead>
-          <tr>
-            <th class="th-label"></th>
-            <th class="th-plan">
-              <div class="plan-badge plan-free">Gratuit</div>
-              <div class="plan-name">Standard</div>
-              <div class="plan-price">0 €</div>
-            </th>
-            <th class="th-plan">
-              <div class="plan-badge plan-premium">Payant</div>
-              <div class="plan-name">Premium</div>
-              <div class="plan-price">9,90 € <span>/mois</span></div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+      {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
+      {% if forfaits is empty %}
+        <p>Aucun forfait disponible.</p>
+      {% else %}
+        <table class="forfaits-table">
+          <thead>
+            <tr>
+              <th class="th-label"></th>
+              {% for forfait in forfaits %}
+                <th class="th-plan">
+                  <div class="plan-badge {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}">
+                    {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'Gratuit' : 'Payant' }}
+                  </div>
+                  <div class="plan-name">{{ forfait.nomForfait }}</div>
+                  <div class="plan-price">
+                    {{ forfait.prix }} €
+                    {% if forfait.prix != '0.00' and forfait.prix != '0' %}<span>/mois</span>{% endif %}
+                  </div>
+                </th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for categorie in categories %}
+              <tr class="category">
+                <td colspan="{{ forfaits|length + 1 }}">{{ categorie }}</td>
+              </tr>
+              {% for key, feature in fonctionnalites %}
+                {% if feature.categorie == categorie %}
+                  <tr>
+                    <td>{{ feature.label }}</td>
+                    {% for forfait in forfaits %}
+                      {% set active = forfait.description|json_decode ?? [] %}
+                      <td>
+                        {% if key in active %}
+                          <span class="check">✔</span>
+                        {% else %}
+                          <span class="cross">✘</span>
+                        {% endif %}
+                      </td>
+                    {% endfor %}
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
 
-          <tr class="category"><td colspan="3">🔧 Proposer des services</td></tr>
-          <tr>
-            <td>Paramétrage</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-          <tr>
-            <td>Périmètre d'intervention</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-          <tr>
-            <td>Notifications « Nouvelles demandes »</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-
-          <tr class="category"><td colspan="3">🙋 Répondre aux demandes</td></tr>
-          <tr>
-            <td>Location de matériel</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-          <tr>
-            <td>Prestation de service</td>
-            <td><span class="check">✔</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-
-          <tr class="category"><td colspan="3">👤 Profil utilisateur</td></tr>
-          <tr>
-            <td>Numéro de téléphone sur le profil</td>
-            <td><span class="cross">✘</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-          <tr>
-            <td>Photos des réalisations sur le profil</td>
-            <td><span class="cross">✘</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-
-          <tr class="category"><td colspan="3">🎧 Assistance</td></tr>
-          <tr>
-            <td>Accompagnement personnalisé et prioritaire</td>
-            <td><span class="cross">✘</span></td>
-            <td><span class="check">✔</span></td>
-          </tr>
-
-          <!-- Boutons -->
-          <tr class="category"><td colspan="3"></td></tr>
-          <tr>
-            <td></td>
-            <td><a href="{{ path('app_forfait_modifier', {id: 'standard'}) }}" class="btn-table btn-modifier">✏️ Modifier</a></td>
-            <td><a href="{{ path('app_forfait_modifier', {id: 'premium'}) }}" class="btn-table btn-modifier">✏️ Modifier</a></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <a href="{{ path('app_forfait_supprimer', {id: 'standard'}) }}"
-                 class="btn-table btn-supprimer"
-                 onclick="return confirm('Supprimer le forfait Standard ?')">🗑️ Supprimer</a>
-            </td>
-            <td>
-              <a href="{{ path('app_forfait_supprimer', {id: 'premium'}) }}"
-                 class="btn-table btn-supprimer"
-                 onclick="return confirm('Supprimer le forfait Premium ?')">🗑️ Supprimer</a>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
+            <tr class="category"><td colspan="{{ forfaits|length + 1 }}"></td></tr>
+            <tr>
+              <td></td>
+              {% for forfait in forfaits %}
+                {% set forfait_id = forfait.idForfait ?? forfait.id %}
+                <td style="text-align:center;">
+                  <a href="{{ path('app_forfait_modifier', {id: forfait_id}) }}" class="btn-table btn-modifier">✏️ Modifier</a>
+                </td>
+              {% endfor %}
+            </tr>
+            <tr>
+              <td></td>
+              {% for forfait in forfaits %}
+                {% set forfait_id = forfait.idForfait ?? forfait.id %}
+                <td style="text-align:center;">
+                  <a href="{{ path('app_forfait_supprimer', {id: forfait_id}) }}"
+                     class="btn-table btn-supprimer"
+                     onclick="return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')">🗑️ Supprimer</a>
+                </td>
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      {% endif %}
     </div>
   </section>
 

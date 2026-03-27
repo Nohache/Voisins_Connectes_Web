@@ -71,6 +71,6 @@ class __TwigTemplate_0a234668778b01984d30e9da6d772d64 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("", "new_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté\\templates\\new_forfait.html.twig");
+        return new Source("", "new_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\new_forfait.html.twig");
     }
 }

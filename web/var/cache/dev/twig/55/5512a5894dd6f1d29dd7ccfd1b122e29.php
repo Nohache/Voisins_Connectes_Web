@@ -74,53 +74,135 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         yield "    </head>
     <body>
         <nav class=\"navbar-floating\">
-            <div class=\"navbar-links\">
-                <img src=\"";
+        <div class=\"navbar-links\">
+            <img src=\"";
         // line 18
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("voisins_connectes_arrondi.png"), "html", null, true);
         yield "\" alt=\"Logo\" class=\"logo\">
-                <a href=\"/voisins_connecte/accueil\" class=\"nav-btn ";
-        // line 19
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "request", [], "any", false, false, false, 19), "pathinfo", [], "any", false, false, false, 19) == "/voisins_connecte/accueil")) {
-            yield "nav-btn--active";
-        } else {
-            yield "nav-btn--inactive";
-        }
-        yield "\">Accueil</a>
-                <a href=\"/voisins_connecte/forfaits\" class=\"nav-btn ";
-        // line 20
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "request", [], "any", false, false, false, 20), "pathinfo", [], "any", false, false, false, 20) == "/voisins_connecte/forfaits")) {
-            yield "nav-btn--active";
-        } else {
-            yield "nav-btn--inactive";
-        }
-        yield "\">Gestion des forfaits</a>
-                <a href=\"/voisins_connecte/gestion_publication\" class=\"nav-btn ";
-        // line 21
-        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "request", [], "any", false, false, false, 21), "pathinfo", [], "any", false, false, false, 21) == "/voisins_connecte/gestion_publication")) {
-            yield "nav-btn--active";
-        } else {
-            yield "nav-btn--inactive";
-        }
-        yield "\">Gestion des publications</a>
 
-                <!-- Dropdown Validation -->
-                <div class=\"dropdown\">
-                    <button class=\"nav-btn nav-btn--inactive dropdown-btn\">Validation ▾</button>
-                    <div class=\"dropdown-menu\">
-                        <a href=\"/voisins_connecte/demande_adhésion\" class=\"dropdown-item\">Demandes d'adhésion</a>
-                        <a href=\"/voisins_connecte/publication_demande_adhésion\" class=\"dropdown-item\">Demandes de publication</a>
-                    </div>
+            <a href=\"";
+        // line 20
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index");
+        yield "\"
+            class=\"nav-btn ";
+        // line 21
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "request", [], "any", false, false, false, 21), "pathinfo", [], "any", false, false, false, 21) == "/voisins_connecte/accueil")) {
+            yield "nav-btn--active";
+        } else {
+            yield "nav-btn--inactive";
+        }
+        yield "\">
+            Accueil
+            </a>
+             
+             <div class=\"dropdown\">
+                <button class=\"nav-btn ";
+        // line 26
+        if ((is_string($_v0 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "request", [], "any", false, false, false, 26), "pathinfo", [], "any", false, false, false, 26)) && is_string($_v1 = "/voisins_connecte/gestion") && str_starts_with($_v0, $_v1))) {
+            yield "nav-btn--active";
+        } else {
+            yield "nav-btn--inactive";
+        }
+        yield " dropdown-btn\">
+                    Gestion ▾
+                </button>
+                <div class=\"dropdown-menu\">
+                    <a href=\"";
+        // line 30
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_forfait");
+        yield "\"
+                    class=\"dropdown-item ";
+        // line 31
+        if ((is_string($_v2 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "request", [], "any", false, false, false, 31), "pathinfo", [], "any", false, false, false, 31)) && is_string($_v3 = "/voisins_connecte/gestion_forfait") && str_starts_with($_v2, $_v3))) {
+            yield "dropdown-item--active";
+        }
+        yield "\">
+                    Forfaits
+                    </a>
+                    <a href=\"";
+        // line 34
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_publication");
+        yield "\"
+                    class=\"dropdown-item ";
+        // line 35
+        if ((is_string($_v4 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "request", [], "any", false, false, false, 35), "pathinfo", [], "any", false, false, false, 35)) && is_string($_v5 = "/voisins_connecte/gestion_publication") && str_starts_with($_v4, $_v5))) {
+            yield "dropdown-item--active";
+        }
+        yield "\">
+                    Publications
+                    </a>
                 </div>
             </div>
-        </nav>
+            <!-- Dropdown Validation — actif si on est sur une page demande -->
+            <div class=\"dropdown\">
+                <button class=\"nav-btn ";
+        // line 42
+        if ((is_string($_v6 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "request", [], "any", false, false, false, 42), "pathinfo", [], "any", false, false, false, 42)) && is_string($_v7 = "/voisins_connecte/demande") && str_starts_with($_v6, $_v7))) {
+            yield "nav-btn--active";
+        } else {
+            yield "nav-btn--inactive";
+        }
+        yield " dropdown-btn\">
+                    Validation ▾
+                </button>
+                <div class=\"dropdown-menu\">
+                    <a href=\"";
+        // line 46
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_adhesion");
+        yield "\"
+                    class=\"dropdown-item ";
+        // line 47
+        if ((is_string($_v8 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "request", [], "any", false, false, false, 47), "pathinfo", [], "any", false, false, false, 47)) && is_string($_v9 = "/voisins_connecte/demande_adh") && str_starts_with($_v8, $_v9))) {
+            yield "dropdown-item--active";
+        }
+        yield "\">
+                    Demandes d'adhésion
+                    </a>
+                    <a href=\"";
+        // line 50
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_publication");
+        yield "\"
+                    class=\"dropdown-item ";
+        // line 51
+        if ((is_string($_v10 = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "request", [], "any", false, false, false, 51), "pathinfo", [], "any", false, false, false, 51)) && is_string($_v11 = "/voisins_connecte/demande_pub") && str_starts_with($_v10, $_v11))) {
+            yield "dropdown-item--active";
+        }
+        yield "\">
+                    Demandes de publication
+                    </a>
+                </div>
+            </div>
 
-        ";
-        // line 34
+            <a href=\"";
+        // line 57
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inscription");
+        yield "\"
+            class=\"nav-btn ";
+        // line 58
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 58, $this->source); })()), "request", [], "any", false, false, false, 58), "pathinfo", [], "any", false, false, false, 58) == "/voisins_connecte/inscription")) {
+            yield "nav-btn--active";
+        } else {
+            yield "nav-btn--inactive";
+        }
+        yield "\">
+            Inscriptions
+            </a>
+
+            <a href=\"";
+        // line 62
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deconnexion");
+        yield "\" class=\"nav-btn nav-btn--deconnexion\">
+                Déconnexion
+            </a>
+        </div>
+    </nav>
+    ";
+        // line 67
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 35
+        // line 68
         yield "    </body>
-</html>";
+</html>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -167,7 +249,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
 
         // line 8
         yield "            <link rel=\"stylesheet\" href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/app.css"), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/app.css"), "html", null, true);
         yield "\">
         ";
         
@@ -229,7 +311,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         yield from [];
     }
 
-    // line 34
+    // line 67
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -272,7 +354,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  233 => 34,  210 => 12,  199 => 13,  196 => 12,  183 => 11,  169 => 8,  156 => 7,  134 => 5,  122 => 35,  120 => 34,  100 => 21,  92 => 20,  84 => 19,  80 => 18,  74 => 14,  72 => 11,  69 => 10,  67 => 7,  63 => 6,  59 => 5,  53 => 1,);
+        return array (  315 => 67,  292 => 12,  281 => 13,  278 => 12,  265 => 11,  251 => 8,  238 => 7,  216 => 5,  203 => 68,  201 => 67,  193 => 62,  182 => 58,  178 => 57,  167 => 51,  163 => 50,  155 => 47,  151 => 46,  140 => 42,  128 => 35,  124 => 34,  116 => 31,  112 => 30,  101 => 26,  89 => 21,  85 => 20,  80 => 18,  74 => 14,  72 => 11,  69 => 10,  67 => 7,  63 => 6,  59 => 5,  53 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -284,7 +366,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         <title>{% block title %}{% endblock %}</title>
         <link rel=\"icon\" href=\"{{ asset('voisins_connectes_arrondi.png') }}\">
         {% block stylesheets %}
-            <link rel=\"stylesheet\" href=\"{{ asset('build/app.css') }}\">
+            <link rel=\"stylesheet\" href=\"{{ asset('styles/app.css') }}\">
         {% endblock %}
 
         {% block javascripts %}
@@ -293,25 +375,59 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
     </head>
     <body>
         <nav class=\"navbar-floating\">
-            <div class=\"navbar-links\">
-                <img src=\"{{ asset('voisins_connectes_arrondi.png') }}\" alt=\"Logo\" class=\"logo\">
-                <a href=\"/voisins_connecte/accueil\" class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">Accueil</a>
-                <a href=\"/voisins_connecte/forfaits\" class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/forfaits' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">Gestion des forfaits</a>
-                <a href=\"/voisins_connecte/gestion_publication\" class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/gestion_publication' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">Gestion des publications</a>
+        <div class=\"navbar-links\">
+            <img src=\"{{ asset('voisins_connectes_arrondi.png') }}\" alt=\"Logo\" class=\"logo\">
 
-                <!-- Dropdown Validation -->
-                <div class=\"dropdown\">
-                    <button class=\"nav-btn nav-btn--inactive dropdown-btn\">Validation ▾</button>
-                    <div class=\"dropdown-menu\">
-                        <a href=\"/voisins_connecte/demande_adhésion\" class=\"dropdown-item\">Demandes d'adhésion</a>
-                        <a href=\"/voisins_connecte/publication_demande_adhésion\" class=\"dropdown-item\">Demandes de publication</a>
-                    </div>
+            <a href=\"{{ path('index') }}\"
+            class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">
+            Accueil
+            </a>
+             
+             <div class=\"dropdown\">
+                <button class=\"nav-btn {% if app.request.pathinfo starts with '/voisins_connecte/gestion' %}nav-btn--active{% else %}nav-btn--inactive{% endif %} dropdown-btn\">
+                    Gestion ▾
+                </button>
+                <div class=\"dropdown-menu\">
+                    <a href=\"{{ path('gestion_forfait') }}\"
+                    class=\"dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/gestion_forfait' %}dropdown-item--active{% endif %}\">
+                    Forfaits
+                    </a>
+                    <a href=\"{{ path('gestion_publication') }}\"
+                    class=\"dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/gestion_publication' %}dropdown-item--active{% endif %}\">
+                    Publications
+                    </a>
                 </div>
             </div>
-        </nav>
+            <!-- Dropdown Validation — actif si on est sur une page demande -->
+            <div class=\"dropdown\">
+                <button class=\"nav-btn {% if app.request.pathinfo starts with '/voisins_connecte/demande' %}nav-btn--active{% else %}nav-btn--inactive{% endif %} dropdown-btn\">
+                    Validation ▾
+                </button>
+                <div class=\"dropdown-menu\">
+                    <a href=\"{{ path('demande_adhesion') }}\"
+                    class=\"dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/demande_adh' %}dropdown-item--active{% endif %}\">
+                    Demandes d'adhésion
+                    </a>
+                    <a href=\"{{ path('demande_publication') }}\"
+                    class=\"dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/demande_pub' %}dropdown-item--active{% endif %}\">
+                    Demandes de publication
+                    </a>
+                </div>
+            </div>
 
-        {% block body %}{% endblock %}
+            <a href=\"{{ path('inscription') }}\"
+            class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/inscription' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">
+            Inscriptions
+            </a>
+
+            <a href=\"{{ path('deconnexion') }}\" class=\"nav-btn nav-btn--deconnexion\">
+                Déconnexion
+            </a>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
     </body>
-</html>", "base.html.twig", "C:\\laragon\\www\\Voisins connecté\\templates\\base.html.twig");
+</html>
+", "base.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\base.html.twig");
     }
 }

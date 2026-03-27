@@ -18,10 +18,15 @@ return [
         '/voisins_connecte/accueil' => [[['_route' => 'index', '_controller' => 'App\\Controller\\BlogController::homepage'], null, null, null, false, false, null]],
         '/voisins_connecte' => [[['_route' => 'connexion', '_controller' => 'App\\Controller\\BlogController::connexion'], null, null, null, true, false, null]],
         '/voisins_connecte/inscription' => [[['_route' => 'inscription', '_controller' => 'App\\Controller\\BlogController::inscription'], null, null, null, false, false, null]],
-        '/voisins_connecte/gestion_publication' => [[['_route' => 'gestion_publication', '_controller' => 'App\\Controller\\BlogController::gestion_publication'], null, null, null, false, false, null]],
-        '/voisins_connecte/mon_profil_client/mes_annonces/ajouter' => [[['_route' => 'ajouter_annonce', '_controller' => 'App\\Controller\\BlogController::ajouter_annonce'], null, null, null, false, false, null]],
-        '/voisins_connecte/mes_prestations' => [[['_route' => 'mes_prestations', '_controller' => 'App\\Controller\\BlogController::mes_prestations'], null, null, null, false, false, null]],
+        '/voisins_connecte/deconnexion' => [[['_route' => 'deconnexion', '_controller' => 'App\\Controller\\BlogController::deconnexion'], null, null, null, false, false, null]],
         '/voisins_connecte/mon_profil_gestionnaire' => [[['_route' => 'mon_profil_gestionnaire', '_controller' => 'App\\Controller\\BlogController::mon_profil_gestionnaire'], null, null, null, false, false, null]],
+        '/voisins_connecte/mes_prestations' => [[['_route' => 'mes_prestations', '_controller' => 'App\\Controller\\BlogController::mes_prestations'], null, null, null, false, false, null]],
+        '/voisins_connecte/mon_profil_client/mes_annonces/ajouter' => [[['_route' => 'ajouter_annonce', '_controller' => 'App\\Controller\\BlogController::ajouter_annonce'], null, null, null, false, false, null]],
+        '/voisins_connecte/gestion_publication' => [[['_route' => 'gestion_publication', '_controller' => 'App\\Controller\\BlogController::gestion_publication'], null, null, null, false, false, null]],
+        '/voisins_connecte/gestion_forfait' => [[['_route' => 'gestion_forfait', '_controller' => 'App\\Controller\\BlogController::gestion_forfait'], null, null, null, false, false, null]],
+        '/voisins_connecte/forfaits/ajouter' => [[['_route' => 'app_forfait_ajouter', '_controller' => 'App\\Controller\\BlogController::ajouter_forfait'], null, null, null, false, false, null]],
+        '/voisins_connecte/demande_adhesion' => [[['_route' => 'demande_adhesion', '_controller' => 'App\\Controller\\BlogController::demande_adhesion'], null, null, null, false, false, null]],
+        '/voisins_connecte/demande_publication' => [[['_route' => 'demande_publication', '_controller' => 'App\\Controller\\BlogController::demande_publication'], null, null, null, false, false, null]],
         '/voisins_connecte/forfaits' => [[['_route' => 'app_forfaits', '_controller' => 'App\\Controller\\ForfaitController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
@@ -45,10 +50,13 @@ return [
                     .')'
                 .')'
                 .'|/voisins_connecte/(?'
-                    .'|modifier_forfait/([^/]++)(*:248)'
+                    .'|gestion_publication/(?'
+                        .'|modifier/([^/]++)(*:263)'
+                        .'|supprimer/([^/]++)(*:289)'
+                    .')'
                     .'|forfaits/(?'
-                        .'|modifier/([^/]++)(*:285)'
-                        .'|supprimer/([^/]++)(*:311)'
+                        .'|modifier/([^/]++)(*:327)'
+                        .'|supprimer/([^/]++)(*:353)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -62,9 +70,10 @@ return [
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        248 => [[['_route' => 'modifier_forfait', '_controller' => 'App\\Controller\\BlogController::modifier_forfait'], ['id'], null, null, false, true, null]],
-        285 => [[['_route' => 'app_forfait_modifier', '_controller' => 'App\\Controller\\ForfaitController::modifier'], ['id'], null, null, false, true, null]],
-        311 => [
+        263 => [[['_route' => 'publication_modifier', '_controller' => 'App\\Controller\\BlogController::publication_modifier'], ['id'], null, null, false, true, null]],
+        289 => [[['_route' => 'publication_supprimer', '_controller' => 'App\\Controller\\BlogController::publication_supprimer'], ['id'], null, null, false, true, null]],
+        327 => [[['_route' => 'app_forfait_modifier', '_controller' => 'App\\Controller\\ForfaitController::modifier'], ['id'], null, null, false, true, null]],
+        353 => [
             [['_route' => 'app_forfait_supprimer', '_controller' => 'App\\Controller\\ForfaitController::supprimer'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

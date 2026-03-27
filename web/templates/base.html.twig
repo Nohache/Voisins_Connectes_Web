@@ -5,7 +5,7 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" href="{{ asset('voisins_connectes_arrondi.png') }}">
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
 
         {% block javascripts %}
@@ -14,23 +14,56 @@
     </head>
     <body>
         <nav class="navbar-floating">
-            <div class="navbar-links">
-                <img src="{{ asset('voisins_connectes_arrondi.png') }}" alt="Logo" class="logo">
-                <a href="/voisins_connecte/accueil" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Accueil</a>
-                <a href="/voisins_connecte/forfaits" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/forfaits' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Gestion des forfaits</a>
-                <a href="/voisins_connecte/gestion_publication" class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/gestion_publication' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">Gestion des publications</a>
+        <div class="navbar-links">
+            <img src="{{ asset('voisins_connectes_arrondi.png') }}" alt="Logo" class="logo">
 
-                <!-- Dropdown Validation -->
-                <div class="dropdown">
-                    <button class="nav-btn nav-btn--inactive dropdown-btn">Validation ▾</button>
-                    <div class="dropdown-menu">
-                        <a href="/voisins_connecte/demande_adhésion" class="dropdown-item">Demandes d'adhésion</a>
-                        <a href="/voisins_connecte/publication_demande_adhésion" class="dropdown-item">Demandes de publication</a>
-                    </div>
+            <a href="{{ path('index') }}"
+            class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">
+            Accueil
+            </a>
+             
+             <div class="dropdown">
+                <button class="nav-btn {% if app.request.pathinfo starts with '/voisins_connecte/gestion' %}nav-btn--active{% else %}nav-btn--inactive{% endif %} dropdown-btn">
+                    Gestion ▾
+                </button>
+                <div class="dropdown-menu">
+                    <a href="{{ path('gestion_forfait') }}"
+                    class="dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/gestion_forfait' %}dropdown-item--active{% endif %}">
+                    Forfaits
+                    </a>
+                    <a href="{{ path('gestion_publication') }}"
+                    class="dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/gestion_publication' %}dropdown-item--active{% endif %}">
+                    Publications
+                    </a>
                 </div>
             </div>
-        </nav>
+            <!-- Dropdown Validation — actif si on est sur une page demande -->
+            <div class="dropdown">
+                <button class="nav-btn {% if app.request.pathinfo starts with '/voisins_connecte/demande' %}nav-btn--active{% else %}nav-btn--inactive{% endif %} dropdown-btn">
+                    Validation ▾
+                </button>
+                <div class="dropdown-menu">
+                    <a href="{{ path('demande_adhesion') }}"
+                    class="dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/demande_adh' %}dropdown-item--active{% endif %}">
+                    Demandes d'adhésion
+                    </a>
+                    <a href="{{ path('demande_publication') }}"
+                    class="dropdown-item {% if app.request.pathinfo starts with '/voisins_connecte/demande_pub' %}dropdown-item--active{% endif %}">
+                    Demandes de publication
+                    </a>
+                </div>
+            </div>
 
-        {% block body %}{% endblock %}
+            <a href="{{ path('inscription') }}"
+            class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/inscription' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">
+            Inscriptions
+            </a>
+
+            <a href="{{ path('deconnexion') }}" class="nav-btn nav-btn--deconnexion">
+                Déconnexion
+            </a>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
     </body>
 </html>

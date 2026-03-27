@@ -373,6 +373,6 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
 
 </div>
 {% endblock %}
-", "accueil.html.twig", "C:\\laragon\\www\\Voisins connecté\\templates\\accueil.html.twig");
+", "accueil.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\accueil.html.twig");
     }
 }

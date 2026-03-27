@@ -1,0 +1,107 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Validation des demandes de publication{% endblock %}
+
+{% block body %}
+<div class="home">
+
+  <!-- HERO -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-text">
+      <h1 class="hero-title">Demandes de <span>publication</span></h1>
+      <p class="hero-desc">Validez ou refusez les demandes de publication soumises par les membres de la plateforme.</p>
+    </div>
+  </section>
+
+  {% for message in app.flashes('success') %}
+    <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+  {% endfor %}
+
+  <section class="publications-section">
+    <h2 class="section-title">Demandes en attente</h2>
+    <p class="section-sub">Liste des publications soumises par les membres en attente de validation.</p>
+
+    <div class="publications-wrapper">
+      <table class="publications-table">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Prix proposé</th>
+            <th>Adresse</th>
+            <th>Catégorie</th>
+            <th>Membre</th>
+            <th>Date demande</th>
+            <th>État</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Taille de haies</td>
+            <td class="td-desc">Besoin d'un coup de main pour tailler mes haies de 10m.</td>
+            <td><span class="badge badge-demande">Demande</span></td>
+            <td>25,00 €</td>
+            <td>Lyon 3e</td>
+            <td>Jardinage</td>
+            <td>M. Dupont</td>
+            <td>12/03/2025</td>
+            <td><span class="badge badge-attente">En attente</span></td>
+            <td class="td-actions">
+              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
+              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Cours de guitare</td>
+            <td class="td-desc">Propose des cours de guitare pour débutants, 1h par semaine.</td>
+            <td><span class="badge badge-offre">Offre</span></td>
+            <td>15,00 €</td>
+            <td>Lyon 1er</td>
+            <td>Cours</td>
+            <td>Mme Leroy</td>
+            <td>13/03/2025</td>
+            <td><span class="badge badge-attente">En attente</span></td>
+            <td class="td-actions">
+              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
+              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Prêt perceuse</td>
+            <td class="td-desc">Je prête ma perceuse pour le week-end.</td>
+            <td><span class="badge badge-offre">Offre</span></td>
+            <td>0,00 €</td>
+            <td>Lyon 6e</td>
+            <td>Outillage</td>
+            <td>Mme Martin</td>
+            <td>14/03/2025</td>
+            <td><span class="badge badge-active">Validée</span></td>
+            <td class="td-actions">
+              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
+              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Transport de meubles</td>
+            <td class="td-desc">Besoin d'aide pour déménager un canapé et une armoire.</td>
+            <td><span class="badge badge-demande">Demande</span></td>
+            <td>40,00 €</td>
+            <td>Villeurbanne</td>
+            <td>Déménagement</td>
+            <td>M. Petit</td>
+            <td>15/03/2025</td>
+            <td><span class="badge badge-cloture">Refusée</span></td>
+            <td class="td-actions">
+              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
+              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -123,7 +123,6 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 19
         yield "
-  <!-- TABLEAU -->
   <section class=\"publications-section\">
     <h2 class=\"section-title\">Toutes les publications</h2>
     <p class=\"section-sub\">Gérez les services publiés par les membres de la plateforme.</p>
@@ -158,8 +157,14 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Jardinage</td>
             <td>M. Dupont</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"";
+        // line 54
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => 1]);
+        yield "\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"";
+        // line 55
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_supprimer", ["id" => 1]);
+        yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -174,8 +179,14 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Outillage</td>
             <td>Mme Martin</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"";
+        // line 70
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => 2]);
+        yield "\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"";
+        // line 71
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_supprimer", ["id" => 2]);
+        yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -190,8 +201,14 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Animaux</td>
             <td>M. Bernard</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"";
+        // line 86
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => 3]);
+        yield "\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"";
+        // line 87
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_supprimer", ["id" => 3]);
+        yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -206,8 +223,14 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Cours</td>
             <td>Mme Leroy</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"";
+        // line 102
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => 4]);
+        yield "\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"";
+        // line 103
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_supprimer", ["id" => 4]);
+        yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -222,8 +245,14 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Déménagement</td>
             <td>M. Petit</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"";
+        // line 118
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => 5]);
+        yield "\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"";
+        // line 119
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_supprimer", ["id" => 5]);
+        yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
         </tbody>
@@ -263,7 +292,7 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  125 => 19,  116 => 17,  112 => 16,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  254 => 119,  250 => 118,  232 => 103,  228 => 102,  210 => 87,  206 => 86,  188 => 71,  184 => 70,  166 => 55,  162 => 54,  125 => 19,  116 => 17,  112 => 16,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -287,7 +316,6 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
     <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
   {% endfor %}
 
-  <!-- TABLEAU -->
   <section class=\"publications-section\">
     <h2 class=\"section-title\">Toutes les publications</h2>
     <p class=\"section-sub\">Gérez les services publiés par les membres de la plateforme.</p>
@@ -322,8 +350,8 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Jardinage</td>
             <td>M. Dupont</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"{{ path('publication_modifier', {id: 1}) }}\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"{{ path('publication_supprimer', {id: 1}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -338,8 +366,8 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Outillage</td>
             <td>Mme Martin</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"{{ path('publication_modifier', {id: 2}) }}\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"{{ path('publication_supprimer', {id: 2}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -354,8 +382,8 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Animaux</td>
             <td>M. Bernard</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"{{ path('publication_modifier', {id: 3}) }}\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"{{ path('publication_supprimer', {id: 3}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -370,8 +398,8 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Cours</td>
             <td>Mme Leroy</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"{{ path('publication_modifier', {id: 4}) }}\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"{{ path('publication_supprimer', {id: 4}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
           <tr>
@@ -386,8 +414,8 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
             <td>Déménagement</td>
             <td>M. Petit</td>
             <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-modifier\">✏️</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
+              <a href=\"{{ path('publication_modifier', {id: 5}) }}\" class=\"btn-table btn-modifier\">✏️</a>
+              <a href=\"{{ path('publication_supprimer', {id: 5}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer cette publication ?')\">🗑️</a>
             </td>
           </tr>
         </tbody>
@@ -397,6 +425,6 @@ class __TwigTemplate_4c4ee99cc9c55ce77e973a2ece9feaed extends Template
 
 </div>
 {% endblock %}
-", "gestion_publication.html.twig", "C:\\laragon\\www\\Voisins connecté\\templates\\gestion_publication.html.twig");
+", "gestion_publication.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\gestion_publication.html.twig");
     }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Connexion - VoisinsConnectés{% endblock %}</title>
+        <link rel="icon"  href="{{ asset('voisins_connectes_arrondi.png') }}">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+<body>
+  <div class="home">
+
+    <section class="forfaits-section">
+
+      {% for message in app.flashes('error') %}
+        <div class="flash-error" style="max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;">❌ {{ message }}</div>
+      {% endfor %}
+
+      <div class="forfaits-wrapper" style="max-width: 500px;">
+        <form method="POST" action="{{ path('connexion') }}">
+          <table class="forfaits-table">
+            <thead>
+              <tr>
+                <th colspan="2" style="text-align:center; font-family:'Playfair Display',serif; font-size:1.3rem; padding: 1.5rem;">
+                  🔑 Connexion à VoisinsConnectés
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="category"><td colspan="2">📋 Identifiants</td></tr>
+
+              <tr>
+                <td>Email</td>
+                <td>
+                  <input type="email" name="email" class="form-input" placeholder="votre@email.com" required>
+                </td>
+              </tr>
+              <tr>
+                <td>Mot de passe</td>
+                <td>
+                  <input type="password" name="password" class="form-input" placeholder="••••••••" required>
+                </td>
+              </tr>
+
+              <tr class="category"><td colspan="2"></td></tr>
+              <tr>
+                <td></td>
+                <td style="text-align:center; padding: 1rem 0;">
+                  <button type="submit" class="btn-primary" style="width: 100%; max-width: 300px;">Se connecter</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </form>
+      </div>
+    </section>
+
+  </div>
+</body>

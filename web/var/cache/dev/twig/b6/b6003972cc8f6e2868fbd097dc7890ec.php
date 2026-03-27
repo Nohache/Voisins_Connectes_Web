@@ -262,15 +262,17 @@ class __TwigTemplate_54463c8bd8549c3eca5f20a17ff0475c extends Template
         yield "
           <!-- BOUTONS -->
           <tr class=\"category\"><td colspan=\"2\"></td></tr>
-          <tr>
-            <td></td>
-            <td style=\"display:flex; gap:0.8rem; justify-content:center; padding: 1rem;\">
-              <a href=\"";
-        // line 83
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfaits");
-        yield "\" class=\"btn-table btn-annuler\">← Annuler</a>
-              <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
-            </td>
+            <tr>
+                <td style=\"text-align:left;\">
+                    <a href=\"";
+        // line 82
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_publication");
+        yield "\" class=\"btn-table btn-annuler\">Annuler</a>
+                </td>
+                <td style=\"text-align:center;\">
+                    <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
+                </td>
+            </tr>
           </tr>
         </tbody>
 
@@ -319,7 +321,7 @@ class __TwigTemplate_54463c8bd8549c3eca5f20a17ff0475c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  270 => 83,  262 => 77,  248 => 71,  243 => 69,  236 => 65,  233 => 64,  225 => 60,  220 => 59,  215 => 58,  210 => 57,  206 => 56,  202 => 54,  199 => 53,  196 => 52,  191 => 51,  189 => 50,  175 => 41,  169 => 40,  163 => 39,  157 => 36,  151 => 33,  138 => 23,  135 => 22,  126 => 20,  122 => 19,  117 => 17,  108 => 11,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
+        return array (  269 => 82,  262 => 77,  248 => 71,  243 => 69,  236 => 65,  233 => 64,  225 => 60,  220 => 59,  215 => 58,  210 => 57,  206 => 56,  202 => 54,  199 => 53,  196 => 52,  191 => 51,  189 => 50,  175 => 41,  169 => 40,  163 => 39,  157 => 36,  151 => 33,  138 => 23,  135 => 22,  126 => 20,  122 => 19,  117 => 17,  108 => 11,  101 => 6,  88 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -403,12 +405,14 @@ class __TwigTemplate_54463c8bd8549c3eca5f20a17ff0475c extends Template
 
           <!-- BOUTONS -->
           <tr class=\"category\"><td colspan=\"2\"></td></tr>
-          <tr>
-            <td></td>
-            <td style=\"display:flex; gap:0.8rem; justify-content:center; padding: 1rem;\">
-              <a href=\"{{ path('app_forfaits') }}\" class=\"btn-table btn-annuler\">← Annuler</a>
-              <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
-            </td>
+            <tr>
+                <td style=\"text-align:left;\">
+                    <a href=\"{{ path('gestion_publication') }}\" class=\"btn-table btn-annuler\">Annuler</a>
+                </td>
+                <td style=\"text-align:center;\">
+                    <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
+                </td>
+            </tr>
           </tr>
         </tbody>
 
@@ -428,6 +432,6 @@ class __TwigTemplate_54463c8bd8549c3eca5f20a17ff0475c extends Template
 </script>
 {% endblock %}
 
-", "modif_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté\\templates\\modif_forfait.html.twig");
+", "modif_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\modif_forfait.html.twig");
     }
 }
