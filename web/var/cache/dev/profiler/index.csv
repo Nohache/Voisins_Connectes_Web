@@ -32,3 +32,6 @@ a6c1b7,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/gestion_publication,
 bc4d39,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/accueil,1775744288,,200,request
 5896c3,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/gestion_forfait,1775744304,,302,request
 e6f120,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/gestion_publication,1775744305,,200,request
+b8a5e3,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/gestion_publication/modifier/1,1775744363,,200,request
+705d93,127.0.0.1,POST,http://127.0.0.1:8000/voisins_connecte/gestion_publication/modifier/1,1775744372,,302,request
+688eb3,127.0.0.1,GET,http://127.0.0.1:8000/voisins_connecte/gestion_publication,1775744374,,200,request
