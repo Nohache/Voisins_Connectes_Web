@@ -3,19 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
-        <link rel="icon" href="{{ asset('voisins_connectes_arrondi.png') }}">
+        <link rel="icon" href="/images/voisins_connectes_arrondi.png">
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+            <link rel="stylesheet" href="/styles/app.css">
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {% block importmap %}{% endblock %}
         {% endblock %}
     </head>
     <body>
         <nav class="navbar-floating">
         <div class="navbar-links">
-            <img src="{{ asset('voisins_connectes_arrondi.png') }}" alt="Logo" class="logo">
+            <img src="/images/voisins_connectes_arrondi.png" alt="Logo" class="logo">
 
             <a href="{{ path('index') }}"
             class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">
@@ -54,10 +54,10 @@
                 </div>
             </div>
 
-            <a href="{{ path('inscription') }}"
+            <!--<a href="{{ path('inscription') }}"
             class="nav-btn {% if app.request.pathinfo == '/voisins_connecte/inscription' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}">
             Inscriptions
-            </a>
+            </a>-->
 
             <a href="{{ path('deconnexion') }}" class="nav-btn nav-btn--deconnexion">
                 Déconnexion

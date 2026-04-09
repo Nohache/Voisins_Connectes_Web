@@ -445,7 +445,6 @@ body { background-color: var(--vert); }
 
 /* Basculement cartes / tableau */
 .forfaits-desktop-only { display: block; }
-.forfaits-mobile-only  { display: none; }
 
 /* ── PUBLICATIONS ── */
 .publications-section { padding: 3rem 4% 6rem; text-align: center; }
@@ -553,12 +552,6 @@ body { background-color: var(--vert); }
 @media (max-width: 900px) {
   .shortcuts-grid, .forfaits-cards-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
-  .forfaits-desktop-only { display: none; }
-  .forfaits-mobile-only  { display: block; }
   .form-row { grid-template-columns: 1fr; }
 }
 
-@media (min-width: 901px) {
-  .forfaits-desktop-only { display: block; }
-  .forfaits-mobile-only  { display: none; }
-}

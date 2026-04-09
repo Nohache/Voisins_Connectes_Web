@@ -110,15 +110,24 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
   <!-- STATS -->
   <section class=\"stats\">
     <div class=\"stat-item\">
-      <span class=\"stat-num\">12</span>
+      <span class=\"stat-num\">";
+        // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["nb_adhesions_en_attente"]) || array_key_exists("nb_adhesions_en_attente", $context) ? $context["nb_adhesions_en_attente"] : (function () { throw new RuntimeError('Variable "nb_adhesions_en_attente" does not exist.', 19, $this->source); })()), "html", null, true);
+        yield "</span>
       <span class=\"stat-label\">Demandes d'adhésion en attente</span>
     </div>
     <div class=\"stat-item\">
-      <span class=\"stat-num\">5</span>
+      <span class=\"stat-num\">";
+        // line 23
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["nb_publications_en_attente"]) || array_key_exists("nb_publications_en_attente", $context) ? $context["nb_publications_en_attente"] : (function () { throw new RuntimeError('Variable "nb_publications_en_attente" does not exist.', 23, $this->source); })()), "html", null, true);
+        yield "</span>
       <span class=\"stat-label\">Publications à valider</span>
     </div>
     <div class=\"stat-item\">
-      <span class=\"stat-num\">3</span>
+      <span class=\"stat-num\">";
+        // line 27
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["nb_forfaits"]) || array_key_exists("nb_forfaits", $context) ? $context["nb_forfaits"] : (function () { throw new RuntimeError('Variable "nb_forfaits" does not exist.', 27, $this->source); })()), "html", null, true);
+        yield "</span>
       <span class=\"stat-label\">Forfaits actifs</span>
     </div>
   </section>
@@ -142,17 +151,8 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
         <span class=\"shortcut-arrow\">→</span>
       </a>
 
-      <!-- <a href=\"/demande_adhésion\" class=\"shortcut-card\">
-        <div class=\"shortcut-icon\">👥</div>
-        <div class=\"shortcut-body\">
-          <p class=\"shortcut-title\">Demandes d'adhésion</p>
-          <p class=\"shortcut-text\">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
-        </div>
-        <span class=\"shortcut-arrow\">→</span>
-      </a> -->
-
       <a href=\"";
-        // line 57
+        // line 48
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_publication");
         yield "\" class=\"shortcut-card\">
         <div class=\"shortcut-icon\">📰</div>
@@ -163,56 +163,31 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
         <span class=\"shortcut-arrow\">→</span>
       </a>
 
-      <!-- <a href=\"/publication_demande_adhésion\" class=\"shortcut-card\">
+      <a href=\"";
+        // line 57
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_adhesion");
+        yield "\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">👥</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Demandes d'adhésion</p>
+          <p class=\"shortcut-text\">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+      <a href=\"";
+        // line 66
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_publication");
+        yield "\" class=\"shortcut-card\">
         <div class=\"shortcut-icon\">📋</div>
         <div class=\"shortcut-body\">
           <p class=\"shortcut-title\">Demandes de publication</p>
           <p class=\"shortcut-text\">Examinez et validez les demandes de publication soumises par les membres.</p>
         </div>
         <span class=\"shortcut-arrow\">→</span>
-      </a> -->
+      </a>
 
-    </div>
-  </section>
 
-  <!-- ACTIVITÉ RÉCENTE -->
-  <section class=\"activity\">
-    <h2 class=\"section-title\">🕐 Activité récente</h2>
-    <p class=\"section-sub\">Un aperçu des dernières demandes et événements sur la plateforme.</p>
-
-    <div class=\"activity-list\">
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-green\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Nouvelle demande d'adhésion</p>
-          <p class=\"activity-sub\">Marie Dupont a soumis une demande d'inscription</p>
-        </div>
-        <span class=\"activity-time\">Il y a 5 min</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-blue\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Publication en attente</p>
-          <p class=\"activity-sub\">Jean Martin a soumis une demande de publication de service</p>
-        </div>
-        <span class=\"activity-time\">Il y a 20 min</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-orange\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Forfait modifié</p>
-          <p class=\"activity-sub\">Le forfait \"Premium\" a été mis à jour</p>
-        </div>
-        <span class=\"activity-time\">Il y a 1h</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-green\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Adhésion validée</p>
-          <p class=\"activity-sub\">La demande de Pierre Leroy a été acceptée</p>
-        </div>
-        <span class=\"activity-time\">Il y a 2h</span>
-      </div>
     </div>
   </section>
 
@@ -248,7 +223,7 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  156 => 57,  135 => 39,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  180 => 66,  168 => 57,  156 => 48,  144 => 39,  129 => 27,  122 => 23,  115 => 19,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -271,15 +246,15 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
   <!-- STATS -->
   <section class=\"stats\">
     <div class=\"stat-item\">
-      <span class=\"stat-num\">12</span>
+      <span class=\"stat-num\">{{ nb_adhesions_en_attente }}</span>
       <span class=\"stat-label\">Demandes d'adhésion en attente</span>
     </div>
     <div class=\"stat-item\">
-      <span class=\"stat-num\">5</span>
+      <span class=\"stat-num\">{{ nb_publications_en_attente }}</span>
       <span class=\"stat-label\">Publications à valider</span>
     </div>
     <div class=\"stat-item\">
-      <span class=\"stat-num\">3</span>
+      <span class=\"stat-num\">{{ nb_forfaits }}</span>
       <span class=\"stat-label\">Forfaits actifs</span>
     </div>
   </section>
@@ -300,15 +275,6 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
         <span class=\"shortcut-arrow\">→</span>
       </a>
 
-      <!-- <a href=\"/demande_adhésion\" class=\"shortcut-card\">
-        <div class=\"shortcut-icon\">👥</div>
-        <div class=\"shortcut-body\">
-          <p class=\"shortcut-title\">Demandes d'adhésion</p>
-          <p class=\"shortcut-text\">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
-        </div>
-        <span class=\"shortcut-arrow\">→</span>
-      </a> -->
-
       <a href=\"{{ path('gestion_publication') }}\" class=\"shortcut-card\">
         <div class=\"shortcut-icon\">📰</div>
         <div class=\"shortcut-body\">
@@ -318,61 +284,29 @@ class __TwigTemplate_994e61d19c3f54e3aa314ca42d0711d3 extends Template
         <span class=\"shortcut-arrow\">→</span>
       </a>
 
-      <!-- <a href=\"/publication_demande_adhésion\" class=\"shortcut-card\">
+      <a href=\"{{ path('demande_adhesion') }}\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">👥</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Demandes d'adhésion</p>
+          <p class=\"shortcut-text\">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+      <a href=\"{{ path('demande_publication') }}\" class=\"shortcut-card\">
         <div class=\"shortcut-icon\">📋</div>
         <div class=\"shortcut-body\">
           <p class=\"shortcut-title\">Demandes de publication</p>
           <p class=\"shortcut-text\">Examinez et validez les demandes de publication soumises par les membres.</p>
         </div>
         <span class=\"shortcut-arrow\">→</span>
-      </a> -->
+      </a>
 
-    </div>
-  </section>
 
-  <!-- ACTIVITÉ RÉCENTE -->
-  <section class=\"activity\">
-    <h2 class=\"section-title\">🕐 Activité récente</h2>
-    <p class=\"section-sub\">Un aperçu des dernières demandes et événements sur la plateforme.</p>
-
-    <div class=\"activity-list\">
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-green\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Nouvelle demande d'adhésion</p>
-          <p class=\"activity-sub\">Marie Dupont a soumis une demande d'inscription</p>
-        </div>
-        <span class=\"activity-time\">Il y a 5 min</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-blue\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Publication en attente</p>
-          <p class=\"activity-sub\">Jean Martin a soumis une demande de publication de service</p>
-        </div>
-        <span class=\"activity-time\">Il y a 20 min</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-orange\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Forfait modifié</p>
-          <p class=\"activity-sub\">Le forfait \"Premium\" a été mis à jour</p>
-        </div>
-        <span class=\"activity-time\">Il y a 1h</span>
-      </div>
-      <div class=\"activity-item\">
-        <div class=\"activity-dot dot-green\"></div>
-        <div class=\"activity-body\">
-          <p class=\"activity-title\">Adhésion validée</p>
-          <p class=\"activity-sub\">La demande de Pierre Leroy a été acceptée</p>
-        </div>
-        <span class=\"activity-time\">Il y a 2h</span>
-      </div>
     </div>
   </section>
 
 </div>
-{% endblock %}
-", "accueil.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\accueil.html.twig");
+{% endblock %}", "accueil.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\accueil.html.twig");
     }
 }

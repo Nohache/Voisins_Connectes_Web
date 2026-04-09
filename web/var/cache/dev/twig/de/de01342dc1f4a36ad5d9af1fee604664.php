@@ -107,13 +107,12 @@ class __TwigTemplate_4c0acb8619bd2aad543b141dbe137bcd extends Template
     </div>
   </section>
 
-  
   ";
-        // line 17
+        // line 16
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "flashes", ["success"], "method", false, false, false, 17));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "flashes", ["success"], "method", false, false, false, 16));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 18
+            // line 17
             yield "    <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
             yield "</div>
@@ -122,329 +121,165 @@ class __TwigTemplate_4c0acb8619bd2aad543b141dbe137bcd extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 19
+        yield "
+  ";
         // line 20
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "flashes", ["error"], "method", false, false, false, 20));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 21
+            yield "    <div class=\"flash-error\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;\">❌ ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
+            yield "</div>
+  ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 23
         yield "
   <!-- ══ CARTES (grands écrans) ══ -->
   <section class=\"forfaits-cards-section forfaits-desktop-only\">
     <h2 class=\"section-title\">Les forfaits disponibles</h2>
     <p class=\"section-sub\">Gérez les forfaits proposés aux membres de la plateforme.</p>
     <a href=\"";
-        // line 25
+        // line 28
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_ajouter");
         yield "\" class=\"btn-primary\" style=\"display:inline-block; margin-bottom:2rem;\">+ Ajouter un forfait</a>
 
-
-    <div class=\"forfaits-cards-grid\">
+    <div class=\"forfaits-cards-grid\" id=\"forfaits-cards-grid\">
       ";
-        // line 29
-        if (Twig\Extension\CoreExtension::testEmpty((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 29, $this->source); })()))) {
-            // line 30
-            yield "        <p>Aucun forfait disponible.</p>
-      ";
-        } else {
+        // line 31
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 31, $this->source); })()));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
             // line 32
             yield "        ";
-            $context["categories"] = ["Proposer des services", "Répondre aux demandes", "Profil utilisateur", "Assistance"];
+            $context["isPremium"] = (CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 32) > 0);
             // line 33
-            yield "        ";
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 33, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
-                // line 34
-                yield "          ";
-                $context["active"] = ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonctionnalites", [], "any", true, true, false, 34)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonctionnalites", [], "any", false, false, false, 34), [])) : ([]));
-                // line 35
-                yield "          <div class=\"forfait-card ";
-                yield (((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 35) != "0")) ? ("forfait-card--premium") : (""));
-                yield "\">
-            <div class=\"forfait-card-header\">
-              <div class=\"plan-badge ";
-                // line 37
-                yield (((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 37) == "0")) ? ("plan-free") : ("plan-premium"));
-                yield "\">";
-                yield (((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 37) == "0")) ? ("Gratuit") : ("Payant"));
-                yield "</div>
-              <h2 class=\"forfait-card-title\">";
-                // line 38
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "nomForfait", [], "any", false, false, false, 38), "html", null, true);
-                yield "</h2>
-              <div class=\"forfait-card-price\">
-                ";
-                // line 40
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 40), "html", null, true);
-                yield " €
-                ";
-                // line 41
-                if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 41) != "0")) {
-                    yield "<span>/";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "duree", [], "any", false, false, false, 41), "html", null, true);
-                    yield "</span>";
-                }
-                // line 42
-                yield "              </div>
-              <p class=\"forfait-card-desc\">";
-                // line 43
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "description_text", [], "any", true, true, false, 43)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "description_text", [], "any", false, false, false, 43), "Description du forfait")) : ("Description du forfait")), "html", null, true);
-                yield "</p>
-            </div>
-            <div class=\"forfait-card-body\">
+            yield "        <div class=\"forfait-card ";
+            yield (((($tmp = (isset($context["isPremium"]) || array_key_exists("isPremium", $context) ? $context["isPremium"] : (function () { throw new RuntimeError('Variable "isPremium" does not exist.', 33, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("forfait-card--premium") : (""));
+            yield "\">
+          <div class=\"forfait-card-header\">
+            <div class=\"plan-badge ";
+            // line 35
+            yield (((($tmp = (isset($context["isPremium"]) || array_key_exists("isPremium", $context) ? $context["isPremium"] : (function () { throw new RuntimeError('Variable "isPremium" does not exist.', 35, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("plan-premium") : ("plan-free"));
+            yield "\">";
+            yield (((($tmp = (isset($context["isPremium"]) || array_key_exists("isPremium", $context) ? $context["isPremium"] : (function () { throw new RuntimeError('Variable "isPremium" does not exist.', 35, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("Payant") : ("Gratuit"));
+            yield "</div>
+            <h2 class=\"forfait-card-title\">";
+            // line 36
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "nomForfait", [], "any", false, false, false, 36), "html", null, true);
+            yield "</h2>
+            <div class=\"forfait-card-price\">
               ";
-                // line 46
-                $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 46, $this->source); })()));
-                foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-                    // line 47
-                    yield "                <div class=\"forfait-feature-category\">";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["categorie"], "html", null, true);
-                    yield "</div>
-                <ul class=\"forfait-features\">
-                  ";
-                    // line 49
-                    $context['_parent'] = $context;
-                    $context['_seq'] = CoreExtension::ensureTraversable((isset($context["fonctionnalites"]) || array_key_exists("fonctionnalites", $context) ? $context["fonctionnalites"] : (function () { throw new RuntimeError('Variable "fonctionnalites" does not exist.', 49, $this->source); })()));
-                    foreach ($context['_seq'] as $context["key"] => $context["feature"]) {
-                        // line 50
-                        yield "                    ";
-                        if ((CoreExtension::getAttribute($this->env, $this->source, $context["feature"], "categorie", [], "any", false, false, false, 50) == $context["categorie"])) {
-                            // line 51
-                            yield "                      <li>
-                        ";
-                            // line 52
-                            if (CoreExtension::inFilter($context["key"], (isset($context["active"]) || array_key_exists("active", $context) ? $context["active"] : (function () { throw new RuntimeError('Variable "active" does not exist.', 52, $this->source); })()))) {
-                                // line 53
-                                yield "                          <span class=\"check\">✔</span>
-                        ";
-                            } else {
-                                // line 55
-                                yield "                          <span class=\"cross\">✘</span>
-                        ";
-                            }
-                            // line 57
-                            yield "                        ";
-                            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["feature"], "label", [], "any", false, false, false, 57), "html", null, true);
-                            yield "
-                      </li>
-                    ";
-                        }
-                        // line 60
-                        yield "                  ";
-                    }
-                    $_parent = $context['_parent'];
-                    unset($context['_seq'], $context['key'], $context['feature'], $context['_parent']);
-                    $context = array_intersect_key($context, $_parent) + $_parent;
-                    // line 61
-                    yield "                </ul>
+            // line 38
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatNumber(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 38), 2, ",", " "), "html", null, true);
+            yield " €
               ";
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_key'], $context['categorie'], $context['_parent']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 63
-                yield "            </div>
-            <div class=\"forfait-card-footer\">
-              <a href=\"";
-                // line 65
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_modifier", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "id", [], "any", false, false, false, 65)]), "html", null, true);
-                yield "\" class=\"btn-table btn-modifier\">✏️ Modifier</a>
-              <a href=\"";
-                // line 66
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_supprimer", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "id", [], "any", false, false, false, 66)]), "html", null, true);
-                yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer le forfait ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "nomForfait", [], "any", false, false, false, 66), "html", null, true);
-                yield " ?')\">🗑️ Supprimer</a>
+            // line 39
+            yield (((($tmp = (isset($context["isPremium"]) || array_key_exists("isPremium", $context) ? $context["isPremium"] : (function () { throw new RuntimeError('Variable "isPremium" does not exist.', 39, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("<span>/mois</span>") : (""));
+            yield "
             </div>
+            <p class=\"forfait-card-duree\">⏱ Durée : ";
+            // line 41
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 41) == 0)) {
+                yield "gratuit";
+            } elseif ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "duree", [], "any", false, false, false, 41) == "mois")) {
+                yield "30 jours";
+            } else {
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "duree", [], "any", false, false, false, 41), "html", null, true);
+                yield " jour(s)";
+            }
+            yield "</p>
           </div>
-        ";
+          <div class=\"forfait-card-body\">
+            <div class=\"forfait-feature-category\">🔧 Proposer des services</div>
+            <ul class=\"forfait-features\">
+              ";
+            // line 46
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_parametrage", [], "any", false, false, false, 46) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Paramétrage</li>";
             }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 47
+            yield "              ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_perimetreIntervention", [], "any", false, false, false, 47) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Périmètre d'intervention</li>";
+            }
+            // line 48
+            yield "              ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_notifications", [], "any", false, false, false, 48) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Notifications « Nouvelles demandes »</li>";
+            }
+            // line 49
+            yield "            </ul>
+            
+            <div class=\"forfait-feature-category\">🙋 Répondre aux demandes</div>
+            <ul class=\"forfait-features\">
+              ";
+            // line 53
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_locationMateriel", [], "any", false, false, false, 53) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Location de matériel</li>";
+            }
+            // line 54
+            yield "              ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_prestationService", [], "any", false, false, false, 54) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Prestation de service</li>";
+            }
+            // line 55
+            yield "            </ul>
+            
+            <div class=\"forfait-feature-category\">👤 Profil utilisateur</div>
+            <ul class=\"forfait-features\">
+              ";
+            // line 59
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_numeroProfil", [], "any", false, false, false, 59) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Numéro de téléphone sur le profil</li>";
+            }
+            // line 60
+            yield "              ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_photosProfil", [], "any", false, false, false, 60) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Photos des réalisations sur le profil</li>";
+            }
+            // line 61
+            yield "            </ul>
+            
+            <div class=\"forfait-feature-category\">🎧 Assistance</div>
+            <ul class=\"forfait-features\">
+              ";
+            // line 65
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonc_accompagnementPrioritaire", [], "any", false, false, false, 65) == "1")) {
+                yield "<li><span class=\"check\">✔</span> Accompagnement personnalisé et prioritaire</li>";
+            }
+            // line 66
+            yield "            </ul>
+          </div>
+          <div class=\"forfait-card-footer\">
+            <a href=\"";
+            // line 69
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_modifier", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "idForfait", [], "any", false, false, false, 69)]), "html", null, true);
+            yield "\" class=\"btn-table btn-modifier\">✏️ Modifier</a>
+            <a href=\"";
             // line 70
-            yield "      ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_supprimer", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "idForfait", [], "any", false, false, false, 70)]), "html", null, true);
+            yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer ce forfait ?')\">🗑️ Supprimer</a>
+          </div>
+        </div>
+      ";
+            $context['_iterated'] = true;
         }
-        // line 71
-        yield "    </div>
-  </section>
-
-  <!-- ══ TABLEAU (petits écrans) ══ -->
-  <section class=\"forfaits-section forfaits-mobile-only\">
-    <h2 class=\"section-title\">Les forfaits disponibles</h2>
-    <p class=\"section-sub\">Aperçu des fonctionnalités incluses dans chaque forfait.</p>
-    <a href=\"";
-        // line 78
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_ajouter");
-        yield "\" class=\"btn-primary\" style=\"display:inline-block; margin-bottom:2rem;\">➕ Ajouter un forfait</a>
-
-
-    <div class=\"forfaits-wrapper\">
-      ";
-        // line 82
-        $context["categories"] = ["Proposer des services", "Répondre aux demandes", "Profil utilisateur", "Assistance"];
-        // line 83
-        yield "      ";
-        if (Twig\Extension\CoreExtension::testEmpty((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 83, $this->source); })()))) {
-            // line 84
-            yield "        <p>Aucun forfait disponible.</p>
-      ";
-        } else {
-            // line 86
-            yield "        <table class=\"forfaits-table\">
-          <thead>
-            <tr>
-              <th class=\"th-label\"></th>
-              ";
-            // line 90
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 90, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
-                // line 91
-                yield "                <th class=\"th-plan\">
-                  <div class=\"plan-badge ";
-                // line 92
-                yield (((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 92) == "0")) ? ("plan-free") : ("plan-premium"));
-                yield "\">";
-                yield (((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 92) == "0")) ? ("Gratuit") : ("Payant"));
-                yield "</div>
-                  <div class=\"plan-name\">";
-                // line 93
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "nomForfait", [], "any", false, false, false, 93), "html", null, true);
-                yield "</div>
-                  <div class=\"plan-price\">";
-                // line 94
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 94), "html", null, true);
-                yield " € ";
-                if ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "prix", [], "any", false, false, false, 94) != "0")) {
-                    yield "<span>/";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "duree", [], "any", false, false, false, 94), "html", null, true);
-                    yield "</span>";
-                }
-                yield "</div>
-                </th>
-              ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 97
-            yield "            </tr>
-          </thead>
-          <tbody>
-            ";
-            // line 100
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 100, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-                // line 101
-                yield "              <tr class=\"category\"><td colspan=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 101, $this->source); })())) + 1), "html", null, true);
-                yield "\">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["categorie"], "html", null, true);
-                yield "</td></tr>
-              ";
-                // line 102
-                $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable((isset($context["fonctionnalites"]) || array_key_exists("fonctionnalites", $context) ? $context["fonctionnalites"] : (function () { throw new RuntimeError('Variable "fonctionnalites" does not exist.', 102, $this->source); })()));
-                foreach ($context['_seq'] as $context["key"] => $context["feature"]) {
-                    // line 103
-                    yield "                ";
-                    if ((CoreExtension::getAttribute($this->env, $this->source, $context["feature"], "categorie", [], "any", false, false, false, 103) == $context["categorie"])) {
-                        // line 104
-                        yield "                  <tr>
-                    <td>";
-                        // line 105
-                        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["feature"], "label", [], "any", false, false, false, 105), "html", null, true);
-                        yield "</td>
-                    ";
-                        // line 106
-                        $context['_parent'] = $context;
-                        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 106, $this->source); })()));
-                        foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
-                            // line 107
-                            yield "                      ";
-                            $context["active"] = ((CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonctionnalites", [], "any", true, true, false, 107)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "fonctionnalites", [], "any", false, false, false, 107), [])) : ([]));
-                            // line 108
-                            yield "                      <td>
-                        ";
-                            // line 109
-                            if (CoreExtension::inFilter($context["key"], (isset($context["active"]) || array_key_exists("active", $context) ? $context["active"] : (function () { throw new RuntimeError('Variable "active" does not exist.', 109, $this->source); })()))) {
-                                // line 110
-                                yield "                          <span class=\"check\">✔</span>
-                        ";
-                            } else {
-                                // line 112
-                                yield "                          <span class=\"cross\">✘</span>
-                        ";
-                            }
-                            // line 114
-                            yield "                      </td>
-                    ";
-                        }
-                        $_parent = $context['_parent'];
-                        unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent']);
-                        $context = array_intersect_key($context, $_parent) + $_parent;
-                        // line 116
-                        yield "                  </tr>
-                ";
-                    }
-                    // line 118
-                    yield "              ";
-                }
-                $_parent = $context['_parent'];
-                unset($context['_seq'], $context['key'], $context['feature'], $context['_parent']);
-                $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 119
-                yield "            ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['categorie'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 120
-            yield "            <tr class=\"category\"><td colspan=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((Twig\Extension\CoreExtension::length($this->env->getCharset(), (isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 120, $this->source); })())) + 1), "html", null, true);
-            yield "\"></td></tr>
-            <tr>
-              <td></td>
-              ";
-            // line 123
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 123, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
-                // line 124
-                yield "                <td style=\"text-align:center; vertical-align:middle; width:22.5%;\"><a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_modifier", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "id", [], "any", false, false, false, 124)]), "html", null, true);
-                yield "\" class=\"btn-table btn-modifier\">✏️ Modifier</a></td>
-              ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 126
-            yield "            </tr>
-            <tr>
-              <td></td>
-              ";
-            // line 129
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["forfaits"]) || array_key_exists("forfaits", $context) ? $context["forfaits"] : (function () { throw new RuntimeError('Variable "forfaits" does not exist.', 129, $this->source); })()));
-            foreach ($context['_seq'] as $context["_key"] => $context["forfait"]) {
-                // line 130
-                yield "                <td style=\"text-align:center; vertical-align:middle; width:22.5%;\"><a href=\"";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_supprimer", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "id", [], "any", false, false, false, 130)]), "html", null, true);
-                yield "\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer le forfait ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["forfait"], "nomForfait", [], "any", false, false, false, 130), "html", null, true);
-                yield " ?')\">🗑️ Supprimer</a></td>
-              ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 132
-            yield "            </tr>
-          </tbody>
-        </table>
+        // line 73
+        if (!$context['_iterated']) {
+            // line 74
+            yield "        <div style=\"text-align:center; padding: 2rem; color: var(--gris);\">Aucun forfait disponible.</div>
       ";
         }
-        // line 136
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['forfait'], $context['_parent'], $context['_iterated']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 76
         yield "    </div>
   </section>
 
@@ -480,7 +315,7 @@ class __TwigTemplate_4c0acb8619bd2aad543b141dbe137bcd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  448 => 136,  442 => 132,  431 => 130,  427 => 129,  422 => 126,  413 => 124,  409 => 123,  402 => 120,  396 => 119,  390 => 118,  386 => 116,  379 => 114,  375 => 112,  371 => 110,  369 => 109,  366 => 108,  363 => 107,  359 => 106,  355 => 105,  352 => 104,  349 => 103,  345 => 102,  338 => 101,  334 => 100,  329 => 97,  314 => 94,  310 => 93,  304 => 92,  301 => 91,  297 => 90,  291 => 86,  287 => 84,  284 => 83,  282 => 82,  275 => 78,  266 => 71,  263 => 70,  251 => 66,  247 => 65,  243 => 63,  236 => 61,  230 => 60,  223 => 57,  219 => 55,  215 => 53,  213 => 52,  210 => 51,  207 => 50,  203 => 49,  197 => 47,  193 => 46,  187 => 43,  184 => 42,  178 => 41,  174 => 40,  169 => 38,  163 => 37,  157 => 35,  154 => 34,  149 => 33,  146 => 32,  142 => 30,  140 => 29,  133 => 25,  126 => 20,  117 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  283 => 76,  276 => 74,  274 => 73,  266 => 70,  262 => 69,  257 => 66,  253 => 65,  247 => 61,  242 => 60,  238 => 59,  232 => 55,  227 => 54,  223 => 53,  217 => 49,  212 => 48,  207 => 47,  203 => 46,  188 => 41,  183 => 39,  179 => 38,  174 => 36,  168 => 35,  162 => 33,  159 => 32,  154 => 31,  148 => 28,  141 => 23,  132 => 21,  128 => 20,  125 => 19,  116 => 17,  112 => 16,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -500,9 +335,12 @@ class __TwigTemplate_4c0acb8619bd2aad543b141dbe137bcd extends Template
     </div>
   </section>
 
-  
   {% for message in app.flashes('success') %}
     <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
+  {% endfor %}
+
+  {% for message in app.flashes('error') %}
+    <div class=\"flash-error\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;\">❌ {{ message }}</div>
   {% endfor %}
 
   <!-- ══ CARTES (grands écrans) ══ -->
@@ -511,120 +349,56 @@ class __TwigTemplate_4c0acb8619bd2aad543b141dbe137bcd extends Template
     <p class=\"section-sub\">Gérez les forfaits proposés aux membres de la plateforme.</p>
     <a href=\"{{ path('app_forfait_ajouter') }}\" class=\"btn-primary\" style=\"display:inline-block; margin-bottom:2rem;\">+ Ajouter un forfait</a>
 
-
-    <div class=\"forfaits-cards-grid\">
-      {% if forfaits is empty %}
-        <p>Aucun forfait disponible.</p>
-      {% else %}
-        {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
-        {% for forfait in forfaits %}
-          {% set active = forfait.fonctionnalites|default([]) %}
-          <div class=\"forfait-card {{ forfait.prix != '0' ? 'forfait-card--premium' : '' }}\">
-            <div class=\"forfait-card-header\">
-              <div class=\"plan-badge {{ forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}\">{{ forfait.prix == '0' ? 'Gratuit' : 'Payant' }}</div>
-              <h2 class=\"forfait-card-title\">{{ forfait.nomForfait }}</h2>
-              <div class=\"forfait-card-price\">
-                {{ forfait.prix }} €
-                {% if forfait.prix != '0' %}<span>/{{ forfait.duree }}</span>{% endif %}
-              </div>
-              <p class=\"forfait-card-desc\">{{ forfait.description_text|default('Description du forfait') }}</p>
+    <div class=\"forfaits-cards-grid\" id=\"forfaits-cards-grid\">
+      {% for forfait in forfaits %}
+        {% set isPremium = forfait.prix > 0 %}
+        <div class=\"forfait-card {{ isPremium ? 'forfait-card--premium' : '' }}\">
+          <div class=\"forfait-card-header\">
+            <div class=\"plan-badge {{ isPremium ? 'plan-premium' : 'plan-free' }}\">{{ isPremium ? 'Payant' : 'Gratuit' }}</div>
+            <h2 class=\"forfait-card-title\">{{ forfait.nomForfait }}</h2>
+            <div class=\"forfait-card-price\">
+              {{ forfait.prix|number_format(2, ',', ' ') }} €
+              {{ isPremium ? '<span>/mois</span>'|raw : '' }}
             </div>
-            <div class=\"forfait-card-body\">
-              {% for categorie in categories %}
-                <div class=\"forfait-feature-category\">{{ categorie }}</div>
-                <ul class=\"forfait-features\">
-                  {% for key, feature in fonctionnalites %}
-                    {% if feature.categorie == categorie %}
-                      <li>
-                        {% if key in active %}
-                          <span class=\"check\">✔</span>
-                        {% else %}
-                          <span class=\"cross\">✘</span>
-                        {% endif %}
-                        {{ feature.label }}
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-              {% endfor %}
-            </div>
-            <div class=\"forfait-card-footer\">
-              <a href=\"{{ path('app_forfait_modifier', {id: forfait.id}) }}\" class=\"btn-table btn-modifier\">✏️ Modifier</a>
-              <a href=\"{{ path('app_forfait_supprimer', {id: forfait.id}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')\">🗑️ Supprimer</a>
-            </div>
+            <p class=\"forfait-card-duree\">⏱ Durée : {% if forfait.prix == 0 %}gratuit{% elseif forfait.duree == 'mois' %}30 jours{% else %}{{ forfait.duree }} jour(s){% endif %}</p>
           </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-  </section>
-
-  <!-- ══ TABLEAU (petits écrans) ══ -->
-  <section class=\"forfaits-section forfaits-mobile-only\">
-    <h2 class=\"section-title\">Les forfaits disponibles</h2>
-    <p class=\"section-sub\">Aperçu des fonctionnalités incluses dans chaque forfait.</p>
-    <a href=\"{{ path('app_forfait_ajouter') }}\" class=\"btn-primary\" style=\"display:inline-block; margin-bottom:2rem;\">➕ Ajouter un forfait</a>
-
-
-    <div class=\"forfaits-wrapper\">
-      {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
-      {% if forfaits is empty %}
-        <p>Aucun forfait disponible.</p>
+          <div class=\"forfait-card-body\">
+            <div class=\"forfait-feature-category\">🔧 Proposer des services</div>
+            <ul class=\"forfait-features\">
+              {% if forfait.fonc_parametrage == '1' %}<li><span class=\"check\">✔</span> Paramétrage</li>{% endif %}
+              {% if forfait.fonc_perimetreIntervention == '1' %}<li><span class=\"check\">✔</span> Périmètre d'intervention</li>{% endif %}
+              {% if forfait.fonc_notifications == '1' %}<li><span class=\"check\">✔</span> Notifications « Nouvelles demandes »</li>{% endif %}
+            </ul>
+            
+            <div class=\"forfait-feature-category\">🙋 Répondre aux demandes</div>
+            <ul class=\"forfait-features\">
+              {% if forfait.fonc_locationMateriel == '1' %}<li><span class=\"check\">✔</span> Location de matériel</li>{% endif %}
+              {% if forfait.fonc_prestationService == '1' %}<li><span class=\"check\">✔</span> Prestation de service</li>{% endif %}
+            </ul>
+            
+            <div class=\"forfait-feature-category\">👤 Profil utilisateur</div>
+            <ul class=\"forfait-features\">
+              {% if forfait.fonc_numeroProfil == '1' %}<li><span class=\"check\">✔</span> Numéro de téléphone sur le profil</li>{% endif %}
+              {% if forfait.fonc_photosProfil == '1' %}<li><span class=\"check\">✔</span> Photos des réalisations sur le profil</li>{% endif %}
+            </ul>
+            
+            <div class=\"forfait-feature-category\">🎧 Assistance</div>
+            <ul class=\"forfait-features\">
+              {% if forfait.fonc_accompagnementPrioritaire == '1' %}<li><span class=\"check\">✔</span> Accompagnement personnalisé et prioritaire</li>{% endif %}
+            </ul>
+          </div>
+          <div class=\"forfait-card-footer\">
+            <a href=\"{{ path('app_forfait_modifier', {id: forfait.idForfait}) }}\" class=\"btn-table btn-modifier\">✏️ Modifier</a>
+            <a href=\"{{ path('app_forfait_supprimer', {id: forfait.idForfait}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer ce forfait ?')\">🗑️ Supprimer</a>
+          </div>
+        </div>
       {% else %}
-        <table class=\"forfaits-table\">
-          <thead>
-            <tr>
-              <th class=\"th-label\"></th>
-              {% for forfait in forfaits %}
-                <th class=\"th-plan\">
-                  <div class=\"plan-badge {{ forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}\">{{ forfait.prix == '0' ? 'Gratuit' : 'Payant' }}</div>
-                  <div class=\"plan-name\">{{ forfait.nomForfait }}</div>
-                  <div class=\"plan-price\">{{ forfait.prix }} € {% if forfait.prix != '0' %}<span>/{{ forfait.duree }}</span>{% endif %}</div>
-                </th>
-              {% endfor %}
-            </tr>
-          </thead>
-          <tbody>
-            {% for categorie in categories %}
-              <tr class=\"category\"><td colspan=\"{{ forfaits|length + 1 }}\">{{ categorie }}</td></tr>
-              {% for key, feature in fonctionnalites %}
-                {% if feature.categorie == categorie %}
-                  <tr>
-                    <td>{{ feature.label }}</td>
-                    {% for forfait in forfaits %}
-                      {% set active = forfait.fonctionnalites|default([]) %}
-                      <td>
-                        {% if key in active %}
-                          <span class=\"check\">✔</span>
-                        {% else %}
-                          <span class=\"cross\">✘</span>
-                        {% endif %}
-                      </td>
-                    {% endfor %}
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-            <tr class=\"category\"><td colspan=\"{{ forfaits|length + 1 }}\"></td></tr>
-            <tr>
-              <td></td>
-              {% for forfait in forfaits %}
-                <td style=\"text-align:center; vertical-align:middle; width:22.5%;\"><a href=\"{{ path('app_forfait_modifier', {id: forfait.id}) }}\" class=\"btn-table btn-modifier\">✏️ Modifier</a></td>
-              {% endfor %}
-            </tr>
-            <tr>
-              <td></td>
-              {% for forfait in forfaits %}
-                <td style=\"text-align:center; vertical-align:middle; width:22.5%;\"><a href=\"{{ path('app_forfait_supprimer', {id: forfait.id}) }}\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')\">🗑️ Supprimer</a></td>
-              {% endfor %}
-            </tr>
-          </tbody>
-        </table>
-      {% endif %}
+        <div style=\"text-align:center; padding: 2rem; color: var(--gris);\">Aucun forfait disponible.</div>
+      {% endfor %}
     </div>
   </section>
 
 </div>
-{% endblock %}
-", "forfaits.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\forfaits.html.twig");
+{% endblock %}", "forfaits.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\forfaits.html.twig");
     }
 }

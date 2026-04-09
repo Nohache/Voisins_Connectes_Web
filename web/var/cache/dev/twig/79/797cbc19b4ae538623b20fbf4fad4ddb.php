@@ -99,21 +99,20 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
         // line 6
         yield "<div class=\"home\">
 
-  <!-- HERO -->
   <section class=\"dashboard-hero\">
     <div class=\"dashboard-hero-text\">
       <h1 class=\"hero-title\">Demandes de <span>publication</span></h1>
-      <p class=\"hero-desc\">Validez ou refusez les demandes de publication soumises par les membres de la plateforme.</p>
+      <p class=\"hero-desc\">Validez ou refusez les demandes de publication soumises par les membres.</p>
     </div>
   </section>
 
   ";
-        // line 16
+        // line 15
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "flashes", ["success"], "method", false, false, false, 16));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 15, $this->source); })()), "flashes", ["success"], "method", false, false, false, 15));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 17
-            yield "    <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ ";
+            // line 16
+            yield "    <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #4CAF50; color: white; border-radius: 1rem; font-weight: 500;\">✅ ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
             yield "</div>
   ";
@@ -121,11 +120,27 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 18
+        yield "
+  ";
         // line 19
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "flashes", ["error"], "method", false, false, false, 19));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 20
+            yield "    <div class=\"flash-error\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #f44336; color: white; border-radius: 1rem; font-weight: 500;\">❌ ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
+            yield "</div>
+  ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
         yield "
   <section class=\"publications-section\">
     <h2 class=\"section-title\">Demandes en attente</h2>
-    <p class=\"section-sub\">Liste des publications soumises par les membres en attente de validation.</p>
+    <p class=\"section-sub\">Liste des publications en attente de validation.</p>
 
     <div class=\"publications-wrapper\">
       <table class=\"publications-table\">
@@ -137,74 +152,113 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
             <th>Prix proposé</th>
             <th>Adresse</th>
             <th>Catégorie</th>
-            <th>Membre</th>
-            <th>Date demande</th>
-            <th>État</th>
+            <th>Membre demandeur</th>
+            <th>Date publication</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Taille de haies</td>
-            <td class=\"td-desc\">Besoin d'un coup de main pour tailler mes haies de 10m.</td>
-            <td><span class=\"badge badge-demande\">Demande</span></td>
-            <td>25,00 €</td>
-            <td>Lyon 3e</td>
-            <td>Jardinage</td>
-            <td>M. Dupont</td>
-            <td>12/03/2025</td>
-            <td><span class=\"badge badge-attente\">En attente</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Cours de guitare</td>
-            <td class=\"td-desc\">Propose des cours de guitare pour débutants, 1h par semaine.</td>
-            <td><span class=\"badge badge-offre\">Offre</span></td>
-            <td>15,00 €</td>
-            <td>Lyon 1er</td>
-            <td>Cours</td>
-            <td>Mme Leroy</td>
-            <td>13/03/2025</td>
-            <td><span class=\"badge badge-attente\">En attente</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Prêt perceuse</td>
-            <td class=\"td-desc\">Je prête ma perceuse pour le week-end.</td>
-            <td><span class=\"badge badge-offre\">Offre</span></td>
-            <td>0,00 €</td>
-            <td>Lyon 6e</td>
-            <td>Outillage</td>
-            <td>Mme Martin</td>
-            <td>14/03/2025</td>
-            <td><span class=\"badge badge-active\">Validée</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Transport de meubles</td>
-            <td class=\"td-desc\">Besoin d'aide pour déménager un canapé et une armoire.</td>
-            <td><span class=\"badge badge-demande\">Demande</span></td>
-            <td>40,00 €</td>
-            <td>Villeurbanne</td>
-            <td>Déménagement</td>
-            <td>M. Petit</td>
-            <td>15/03/2025</td>
-            <td><span class=\"badge badge-cloture\">Refusée</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-        </tbody>
+          ";
+        // line 43
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["services"]) || array_key_exists("services", $context) ? $context["services"] : (function () { throw new RuntimeError('Variable "services" does not exist.', 43, $this->source); })()));
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["service"]) {
+            // line 44
+            yield "            ";
+            $context["membre"] = (((CoreExtension::getAttribute($this->env, $this->source, ($context["membresIndex"] ?? null), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", true, true, false, 44) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)) : (0)), [], "array", true, true, false, 44) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, (isset($context["membresIndex"]) || array_key_exists("membresIndex", $context) ? $context["membresIndex"] : (function () { throw new RuntimeError('Variable "membresIndex" does not exist.', 44, $this->source); })()), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", true, true, false, 44) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)) : (0)), [], "array", false, false, false, 44)))) ? (CoreExtension::getAttribute($this->env, $this->source, (isset($context["membresIndex"]) || array_key_exists("membresIndex", $context) ? $context["membresIndex"] : (function () { throw new RuntimeError('Variable "membresIndex" does not exist.', 44, $this->source); })()), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", true, true, false, 44) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idMembre_demandeur", [], "any", false, false, false, 44)) : (0)), [], "array", false, false, false, 44)) : (null));
+            // line 45
+            yield "            ";
+            $context["categorie"] = (((CoreExtension::getAttribute($this->env, $this->source, ($context["categoriesIndex"] ?? null), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)) : (0)), [], "array", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, (isset($context["categoriesIndex"]) || array_key_exists("categoriesIndex", $context) ? $context["categoriesIndex"] : (function () { throw new RuntimeError('Variable "categoriesIndex" does not exist.', 45, $this->source); })()), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)) : (0)), [], "array", false, false, false, 45)))) ? (CoreExtension::getAttribute($this->env, $this->source, (isset($context["categoriesIndex"]) || array_key_exists("categoriesIndex", $context) ? $context["categoriesIndex"] : (function () { throw new RuntimeError('Variable "categoriesIndex" does not exist.', 45, $this->source); })()), (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)))) ? (CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idCategorie", [], "any", false, false, false, 45)) : (0)), [], "array", false, false, false, 45)) : (null));
+            // line 46
+            yield "            <tr>
+              <td style=\"font-weight: 500;\">";
+            // line 47
+            yield (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "titre", [], "any", true, true, false, 47) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "titre", [], "any", false, false, false, 47)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["service"], "titre", [], "any", false, false, false, 47), "html", null, true)) : ("—"));
+            yield "</td>
+              <td style=\"max-width: 250px; white-space: normal; word-wrap: break-word;\">";
+            // line 48
+            yield (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "description", [], "any", true, true, false, 48) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "description", [], "any", false, false, false, 48)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["service"], "description", [], "any", false, false, false, 48), "html", null, true)) : ("—"));
+            yield "</td>
+              <td>
+                ";
+            // line 50
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "typeService", [], "any", false, false, false, 50) == "public")) {
+                // line 51
+                yield "                  <span style=\"display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #e3f2fd; color: #1976d2;\">Public</span>
+                ";
+            } else {
+                // line 53
+                yield "                  <span style=\"display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #f3e5f5; color: #7b1fa2;\">Privé</span>
+                ";
+            }
+            // line 55
+            yield "              </td>
+              <td style=\"text-align: right;\">
+                ";
+            // line 57
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "prixPropose", [], "any", true, true, false, 57) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "prixPropose", [], "any", false, false, false, 57)))) {
+                // line 58
+                yield "                  ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatNumber(CoreExtension::getAttribute($this->env, $this->source, $context["service"], "prixPropose", [], "any", false, false, false, 58), 2, ",", " "), "html", null, true);
+                yield " €
+                ";
+            } else {
+                // line 60
+                yield "                  —
+                ";
+            }
+            // line 62
+            yield "              </td>
+              <td>";
+            // line 63
+            yield (((CoreExtension::getAttribute($this->env, $this->source, $context["service"], "adresseExecution", [], "any", true, true, false, 63) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, $context["service"], "adresseExecution", [], "any", false, false, false, 63)))) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["service"], "adresseExecution", [], "any", false, false, false, 63), "html", null, true)) : ("—"));
+            yield "</td>
+              <td>";
+            // line 64
+            yield (((($tmp = (isset($context["categorie"]) || array_key_exists("categorie", $context) ? $context["categorie"] : (function () { throw new RuntimeError('Variable "categorie" does not exist.', 64, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["categorie"]) || array_key_exists("categorie", $context) ? $context["categorie"] : (function () { throw new RuntimeError('Variable "categorie" does not exist.', 64, $this->source); })()), "libelle", [], "any", false, false, false, 64), "html", null, true)) : ("—"));
+            yield "</td>
+              <td>";
+            // line 65
+            yield (((($tmp = (isset($context["membre"]) || array_key_exists("membre", $context) ? $context["membre"] : (function () { throw new RuntimeError('Variable "membre" does not exist.', 65, $this->source); })())) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, (isset($context["membre"]) || array_key_exists("membre", $context) ? $context["membre"] : (function () { throw new RuntimeError('Variable "membre" does not exist.', 65, $this->source); })()), "prenom", [], "any", false, false, false, 65) . " ") . CoreExtension::getAttribute($this->env, $this->source, (isset($context["membre"]) || array_key_exists("membre", $context) ? $context["membre"] : (function () { throw new RuntimeError('Variable "membre" does not exist.', 65, $this->source); })()), "nom", [], "any", false, false, false, 65)), "html", null, true)) : ("—"));
+            yield "</td>
+              <td>";
+            // line 66
+            yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["service"], "datePublication", [], "any", false, false, false, 66)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["service"], "datePublication", [], "any", false, false, false, 66), "d/m/Y"), "html", null, true)) : ("—"));
+            yield "</td>
+              <td style=\"white-space: nowrap;\">
+                <a href=\"";
+            // line 68
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_valider", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idService", [], "any", false, false, false, 68)]), "html", null, true);
+            yield "\"
+                   style=\"display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #4CAF50; color: white; border-radius: 0.5rem; text-decoration: none;\"
+                   onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
+                <a href=\"";
+            // line 71
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_refuser", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["service"], "idService", [], "any", false, false, false, 71)]), "html", null, true);
+            yield "\"
+                   style=\"display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #f44336; color: white; border-radius: 0.5rem; text-decoration: none;\"
+                   onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
+              </td>
+            </tr>
+          ";
+            $context['_iterated'] = true;
+        }
+        // line 76
+        if (!$context['_iterated']) {
+            // line 77
+            yield "            <tr>
+              <td colspan=\"9\" style=\"text-align: center; padding: 2rem; color: #888;\">
+                Aucune demande de publication en attente.
+              </td>
+            </tr>
+          ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['service'], $context['_parent'], $context['_iterated']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 83
+        yield "        </tbody>
       </table>
     </div>
   </section>
@@ -241,7 +295,7 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  125 => 19,  116 => 17,  112 => 16,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  261 => 83,  250 => 77,  248 => 76,  238 => 71,  232 => 68,  227 => 66,  223 => 65,  219 => 64,  215 => 63,  212 => 62,  208 => 60,  202 => 58,  200 => 57,  196 => 55,  192 => 53,  188 => 51,  186 => 50,  181 => 48,  177 => 47,  174 => 46,  171 => 45,  168 => 44,  163 => 43,  140 => 22,  131 => 20,  127 => 19,  124 => 18,  115 => 16,  111 => 15,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -253,21 +307,24 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
 {% block body %}
 <div class=\"home\">
 
-  <!-- HERO -->
   <section class=\"dashboard-hero\">
     <div class=\"dashboard-hero-text\">
       <h1 class=\"hero-title\">Demandes de <span>publication</span></h1>
-      <p class=\"hero-desc\">Validez ou refusez les demandes de publication soumises par les membres de la plateforme.</p>
+      <p class=\"hero-desc\">Validez ou refusez les demandes de publication soumises par les membres.</p>
     </div>
   </section>
 
   {% for message in app.flashes('success') %}
-    <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
+    <div class=\"flash-success\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #4CAF50; color: white; border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
+  {% endfor %}
+
+  {% for message in app.flashes('error') %}
+    <div class=\"flash-error\" style=\"max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #f44336; color: white; border-radius: 1rem; font-weight: 500;\">❌ {{ message }}</div>
   {% endfor %}
 
   <section class=\"publications-section\">
     <h2 class=\"section-title\">Demandes en attente</h2>
-    <p class=\"section-sub\">Liste des publications soumises par les membres en attente de validation.</p>
+    <p class=\"section-sub\">Liste des publications en attente de validation.</p>
 
     <div class=\"publications-wrapper\">
       <table class=\"publications-table\">
@@ -279,73 +336,52 @@ class __TwigTemplate_e96c1d4e4308721877f953b885c92491 extends Template
             <th>Prix proposé</th>
             <th>Adresse</th>
             <th>Catégorie</th>
-            <th>Membre</th>
-            <th>Date demande</th>
-            <th>État</th>
+            <th>Membre demandeur</th>
+            <th>Date publication</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Taille de haies</td>
-            <td class=\"td-desc\">Besoin d'un coup de main pour tailler mes haies de 10m.</td>
-            <td><span class=\"badge badge-demande\">Demande</span></td>
-            <td>25,00 €</td>
-            <td>Lyon 3e</td>
-            <td>Jardinage</td>
-            <td>M. Dupont</td>
-            <td>12/03/2025</td>
-            <td><span class=\"badge badge-attente\">En attente</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Cours de guitare</td>
-            <td class=\"td-desc\">Propose des cours de guitare pour débutants, 1h par semaine.</td>
-            <td><span class=\"badge badge-offre\">Offre</span></td>
-            <td>15,00 €</td>
-            <td>Lyon 1er</td>
-            <td>Cours</td>
-            <td>Mme Leroy</td>
-            <td>13/03/2025</td>
-            <td><span class=\"badge badge-attente\">En attente</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Prêt perceuse</td>
-            <td class=\"td-desc\">Je prête ma perceuse pour le week-end.</td>
-            <td><span class=\"badge badge-offre\">Offre</span></td>
-            <td>0,00 €</td>
-            <td>Lyon 6e</td>
-            <td>Outillage</td>
-            <td>Mme Martin</td>
-            <td>14/03/2025</td>
-            <td><span class=\"badge badge-active\">Validée</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Transport de meubles</td>
-            <td class=\"td-desc\">Besoin d'aide pour déménager un canapé et une armoire.</td>
-            <td><span class=\"badge badge-demande\">Demande</span></td>
-            <td>40,00 €</td>
-            <td>Villeurbanne</td>
-            <td>Déménagement</td>
-            <td>M. Petit</td>
-            <td>15/03/2025</td>
-            <td><span class=\"badge badge-cloture\">Refusée</span></td>
-            <td class=\"td-actions\">
-              <a href=\"#\" class=\"btn-table btn-valider\" onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
-              <a href=\"#\" class=\"btn-table btn-supprimer\" onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
-            </td>
-          </tr>
+          {% for service in services %}
+            {% set membre    = membresIndex[service.idMembre_demandeur ?? 0] ?? null %}
+            {% set categorie = categoriesIndex[service.idCategorie ?? 0] ?? null %}
+            <tr>
+              <td style=\"font-weight: 500;\">{{ service.titre ?? '—' }}</td>
+              <td style=\"max-width: 250px; white-space: normal; word-wrap: break-word;\">{{ service.description ?? '—' }}</td>
+              <td>
+                {% if service.typeService == 'public' %}
+                  <span style=\"display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #e3f2fd; color: #1976d2;\">Public</span>
+                {% else %}
+                  <span style=\"display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #f3e5f5; color: #7b1fa2;\">Privé</span>
+                {% endif %}
+              </td>
+              <td style=\"text-align: right;\">
+                {% if service.prixPropose is defined and service.prixPropose is not null %}
+                  {{ service.prixPropose|number_format(2, ',', ' ') }} €
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td>{{ service.adresseExecution ?? '—' }}</td>
+              <td>{{ categorie ? categorie.libelle : '—' }}</td>
+              <td>{{ membre ? membre.prenom ~ ' ' ~ membre.nom : '—' }}</td>
+              <td>{{ service.datePublication ? service.datePublication|date('d/m/Y') : '—' }}</td>
+              <td style=\"white-space: nowrap;\">
+                <a href=\"{{ path('publication_valider', {id: service.idService}) }}\"
+                   style=\"display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #4CAF50; color: white; border-radius: 0.5rem; text-decoration: none;\"
+                   onclick=\"return confirm('Valider cette publication ?')\">✅ Valider</a>
+                <a href=\"{{ path('publication_refuser', {id: service.idService}) }}\"
+                   style=\"display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #f44336; color: white; border-radius: 0.5rem; text-decoration: none;\"
+                   onclick=\"return confirm('Refuser cette publication ?')\">❌ Refuser</a>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan=\"9\" style=\"text-align: center; padding: 2rem; color: #888;\">
+                Aucune demande de publication en attente.
+              </td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

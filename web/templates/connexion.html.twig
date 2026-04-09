@@ -3,11 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Connexion - VoisinsConnectés{% endblock %}</title>
-        <link rel="icon"  href="{{ asset('voisins_connectes_arrondi.png') }}">
+        <link rel="icon" href="/images/voisins_connectes_arrondi.png">
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="/styles/app.css">
         {% endblock %}
-
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
@@ -19,6 +18,10 @@
 
       {% for message in app.flashes('error') %}
         <div class="flash-error" style="max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;">❌ {{ message }}</div>
+      {% endfor %}
+
+      {% for message in app.flashes('success') %}
+        <div class="flash-success" style="max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #dcfce7; color: #16a34a; border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
       {% endfor %}
 
       <div class="forfaits-wrapper" style="max-width: 500px;">
@@ -44,7 +47,7 @@
               <tr>
                 <td>Mot de passe</td>
                 <td>
-                  <input type="password" name="password" class="form-input" placeholder="••••••••" required>
+                  <input type="password" name="motDePasse" class="form-input" placeholder="••••••••" required>
                 </td>
               </tr>
 
@@ -64,3 +67,4 @@
 
   </div>
 </body>
+</html>

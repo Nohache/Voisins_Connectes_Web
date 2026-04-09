@@ -17,145 +17,62 @@
     <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
   {% endfor %}
 
+  {% for message in app.flashes('error') %}
+    <div class="flash-error" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;">❌ {{ message }}</div>
+  {% endfor %}
+
   <!-- ══ CARTES (grands écrans) ══ -->
   <section class="forfaits-cards-section forfaits-desktop-only">
     <h2 class="section-title">Les forfaits disponibles</h2>
     <p class="section-sub">Gérez les forfaits proposés aux membres de la plateforme.</p>
     <a href="{{ path('app_forfait_ajouter') }}" class="btn-primary" style="display:inline-block; margin-bottom:2rem;">+ Ajouter un forfait</a>
 
-    <div class="forfaits-cards-grid">
-      {% if forfaits is empty %}
-        <p>Aucun forfait disponible.</p>
-      {% else %}
-        {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
-        {% for forfait in forfaits %}
-          {% set forfait_id = forfait.idForfait ?? forfait.id %}
-          {% set active = forfait.description|json_decode ?? [] %}
-
-          <div class="forfait-card {{ forfait.prix != '0.00' and forfait.prix != '0' ? 'forfait-card--premium' : '' }}">
-            <div class="forfait-card-header">
-              <div class="plan-badge {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}">
-                {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'Gratuit' : 'Payant' }}
-              </div>
-              <h2 class="forfait-card-title">{{ forfait.nomForfait }}</h2>
-              <div class="forfait-card-price">
-                {{ forfait.prix }} €
-                {% if forfait.prix != '0.00' and forfait.prix != '0' %}
-                  <span>/mois</span>
-                {% endif %}
-              </div>
-              <p class="forfait-card-desc">Description du forfait</p>
+    <div class="forfaits-cards-grid" id="forfaits-cards-grid">
+      {% for forfait in forfaits %}
+        {% set isPremium = forfait.prix > 0 %}
+        <div class="forfait-card {{ isPremium ? 'forfait-card--premium' : '' }}">
+          <div class="forfait-card-header">
+            <div class="plan-badge {{ isPremium ? 'plan-premium' : 'plan-free' }}">{{ isPremium ? 'Payant' : 'Gratuit' }}</div>
+            <h2 class="forfait-card-title">{{ forfait.nomForfait }}</h2>
+            <div class="forfait-card-price">
+              {{ forfait.prix|number_format(2, ',', ' ') }} €
+              {{ isPremium ? '<span>/mois</span>'|raw : '' }}
             </div>
-
-            <div class="forfait-card-body">
-              {% for categorie in categories %}
-                <div class="forfait-feature-category">{{ categorie }}</div>
-                <ul class="forfait-features">
-                  {% for key, feature in fonctionnalites %}
-                    {% if feature.categorie == categorie %}
-                      <li>
-                        {% if key in active %}
-                          <span class="check">✔</span>
-                        {% else %}
-                          <span class="cross">✘</span>
-                        {% endif %}
-                        {{ feature.label }}
-                      </li>
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-              {% endfor %}
-            </div>
-
-            <div class="forfait-card-footer">
-              <a href="{{ path('app_forfait_modifier', {id: forfait_id}) }}" class="btn-table btn-modifier">✏️ Modifier</a>
-              <a href="{{ path('app_forfait_supprimer', {id: forfait_id}) }}"
-                 class="btn-table btn-supprimer"
-                 onclick="return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')">🗑️ Supprimer</a>
-            </div>
+            <p class="forfait-card-duree">⏱ Durée : {% if forfait.prix == 0 %}gratuit{% elseif forfait.duree == 'mois' %}30 jours{% else %}{{ forfait.duree }} jour(s){% endif %}</p>
           </div>
-        {% endfor %}
-      {% endif %}
-    </div>
-  </section>
-
-  <!-- ══ TABLEAU (petits écrans) ══ -->
-  <section class="forfaits-section forfaits-mobile-only">
-    <h2 class="section-title">Les forfaits disponibles</h2>
-    <p class="section-sub">Aperçu des fonctionnalités incluses dans chaque forfait.</p>
-    <a href="{{ path('app_forfait_ajouter') }}" class="btn-primary" style="display:inline-block; margin-bottom:2rem;">➕ Ajouter un forfait</a>
-
-    <div class="forfaits-wrapper">
-      {% set categories = ['Proposer des services', 'Répondre aux demandes', 'Profil utilisateur', 'Assistance'] %}
-      {% if forfaits is empty %}
-        <p>Aucun forfait disponible.</p>
+          <div class="forfait-card-body">
+            <div class="forfait-feature-category">🔧 Proposer des services</div>
+            <ul class="forfait-features">
+              {% if forfait.fonc_parametrage == '1' %}<li><span class="check">✔</span> Paramétrage</li>{% endif %}
+              {% if forfait.fonc_perimetreIntervention == '1' %}<li><span class="check">✔</span> Périmètre d'intervention</li>{% endif %}
+              {% if forfait.fonc_notifications == '1' %}<li><span class="check">✔</span> Notifications « Nouvelles demandes »</li>{% endif %}
+            </ul>
+            
+            <div class="forfait-feature-category">🙋 Répondre aux demandes</div>
+            <ul class="forfait-features">
+              {% if forfait.fonc_locationMateriel == '1' %}<li><span class="check">✔</span> Location de matériel</li>{% endif %}
+              {% if forfait.fonc_prestationService == '1' %}<li><span class="check">✔</span> Prestation de service</li>{% endif %}
+            </ul>
+            
+            <div class="forfait-feature-category">👤 Profil utilisateur</div>
+            <ul class="forfait-features">
+              {% if forfait.fonc_numeroProfil == '1' %}<li><span class="check">✔</span> Numéro de téléphone sur le profil</li>{% endif %}
+              {% if forfait.fonc_photosProfil == '1' %}<li><span class="check">✔</span> Photos des réalisations sur le profil</li>{% endif %}
+            </ul>
+            
+            <div class="forfait-feature-category">🎧 Assistance</div>
+            <ul class="forfait-features">
+              {% if forfait.fonc_accompagnementPrioritaire == '1' %}<li><span class="check">✔</span> Accompagnement personnalisé et prioritaire</li>{% endif %}
+            </ul>
+          </div>
+          <div class="forfait-card-footer">
+            <a href="{{ path('app_forfait_modifier', {id: forfait.idForfait}) }}" class="btn-table btn-modifier">✏️ Modifier</a>
+            <a href="{{ path('app_forfait_supprimer', {id: forfait.idForfait}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer ce forfait ?')">🗑️ Supprimer</a>
+          </div>
+        </div>
       {% else %}
-        <table class="forfaits-table">
-          <thead>
-            <tr>
-              <th class="th-label"></th>
-              {% for forfait in forfaits %}
-                <th class="th-plan">
-                  <div class="plan-badge {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'plan-free' : 'plan-premium' }}">
-                    {{ forfait.prix == '0.00' or forfait.prix == '0' ? 'Gratuit' : 'Payant' }}
-                  </div>
-                  <div class="plan-name">{{ forfait.nomForfait }}</div>
-                  <div class="plan-price">
-                    {{ forfait.prix }} €
-                    {% if forfait.prix != '0.00' and forfait.prix != '0' %}<span>/mois</span>{% endif %}
-                  </div>
-                </th>
-              {% endfor %}
-            </tr>
-          </thead>
-          <tbody>
-            {% for categorie in categories %}
-              <tr class="category">
-                <td colspan="{{ forfaits|length + 1 }}">{{ categorie }}</td>
-              </tr>
-              {% for key, feature in fonctionnalites %}
-                {% if feature.categorie == categorie %}
-                  <tr>
-                    <td>{{ feature.label }}</td>
-                    {% for forfait in forfaits %}
-                      {% set active = forfait.description|json_decode ?? [] %}
-                      <td>
-                        {% if key in active %}
-                          <span class="check">✔</span>
-                        {% else %}
-                          <span class="cross">✘</span>
-                        {% endif %}
-                      </td>
-                    {% endfor %}
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-
-            <tr class="category"><td colspan="{{ forfaits|length + 1 }}"></td></tr>
-            <tr>
-              <td></td>
-              {% for forfait in forfaits %}
-                {% set forfait_id = forfait.idForfait ?? forfait.id %}
-                <td style="text-align:center;">
-                  <a href="{{ path('app_forfait_modifier', {id: forfait_id}) }}" class="btn-table btn-modifier">✏️ Modifier</a>
-                </td>
-              {% endfor %}
-            </tr>
-            <tr>
-              <td></td>
-              {% for forfait in forfaits %}
-                {% set forfait_id = forfait.idForfait ?? forfait.id %}
-                <td style="text-align:center;">
-                  <a href="{{ path('app_forfait_supprimer', {id: forfait_id}) }}"
-                     class="btn-table btn-supprimer"
-                     onclick="return confirm('Supprimer le forfait {{ forfait.nomForfait }} ?')">🗑️ Supprimer</a>
-                </td>
-              {% endfor %}
-            </tr>
-          </tbody>
-        </table>
-      {% endif %}
+        <div style="text-align:center; padding: 2rem; color: var(--gris);">Aucun forfait disponible.</div>
+      {% endfor %}
     </div>
   </section>
 

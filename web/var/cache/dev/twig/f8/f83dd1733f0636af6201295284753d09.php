@@ -73,7 +73,7 @@ class __TwigTemplate_46556ed5e0b8dd072671c1e5ceb502ee extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Modifier la publication";
+        yield "Modifier une publication";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -98,188 +98,264 @@ class __TwigTemplate_46556ed5e0b8dd072671c1e5ceb502ee extends Template
 
         // line 6
         yield "
-";
-        // line 8
-        $context["publications"] = [1 => ["titre" => "Taille de haies", "description" => "Besoin d'un coup de main pour tailler mes haies de 10m.", "typeService" => "Demande", "etatService" => "Active", "datePublication" => "01/03/2025", "dateCloture" => "30/03/2025", "prixPropose" => "25,00 €", "adresseExecution" => "Lyon 3e", "categorie" => "Jardinage", "membre" => "M. Dupont"], 2 => ["titre" => "Prêt perceuse", "description" => "Je prête ma perceuse pour le week-end.", "typeService" => "Offre", "etatService" => "Active", "datePublication" => "05/03/2025", "dateCloture" => "15/03/2025", "prixPropose" => "0,00 €", "adresseExecution" => "Lyon 6e", "categorie" => "Outillage", "membre" => "Mme Martin"], 3 => ["titre" => "Garde de chat", "description" => "Cherche quelqu'un pour garder mon chat pendant 1 semaine.", "typeService" => "Demande", "etatService" => "Clôturée", "datePublication" => "10/02/2025", "dateCloture" => "17/02/2025", "prixPropose" => "50,00 €", "adresseExecution" => "Lyon 2e", "categorie" => "Animaux", "membre" => "M. Bernard"], 4 => ["titre" => "Cours de guitare", "description" => "Propose des cours de guitare pour débutants, 1h par semaine.", "typeService" => "Offre", "etatService" => "En attente", "datePublication" => "12/03/2025", "dateCloture" => "—", "prixPropose" => "15,00 €", "adresseExecution" => "Lyon 1er", "categorie" => "Cours", "membre" => "Mme Leroy"], 5 => ["titre" => "Transport de meubles", "description" => "Besoin d'aide pour déménager un canapé et une armoire.", "typeService" => "Demande", "etatService" => "Active", "datePublication" => "14/03/2025", "dateCloture" => "21/03/2025", "prixPropose" => "40,00 €", "adresseExecution" => "Villeurbanne", "categorie" => "Déménagement", "membre" => "M. Petit"]];
-        // line 15
-        yield "
-";
-        // line 16
-        $context["pub"] = CoreExtension::getAttribute($this->env, $this->source, (isset($context["publications"]) || array_key_exists("publications", $context) ? $context["publications"] : (function () { throw new RuntimeError('Variable "publications" does not exist.', 16, $this->source); })()), (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new RuntimeError('Variable "id" does not exist.', 16, $this->source); })()), [], "array", false, false, false, 16);
-        // line 17
-        yield "
 <div class=\"home\">
 
-  <!-- HERO -->
-  <section class=\"dashboard-hero\">
-    <div class=\"dashboard-hero-text\">
-      <h1 class=\"hero-title\">Modifier la <span>publication</span></h1>
-      <p class=\"hero-desc\">Modifiez les informations de cette publication.</p>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class=\"dashboard-hero\">
+        <div class=\"dashboard-hero-text\">
+            <h1 class=\"hero-title\">Modifier la <span>publication</span></h1>
+            <p class=\"hero-desc\">Ajustez les informations de cette publication.</p>
+        </div>
+    </section>
 
-  <section class=\"publications-section\">
+    <section class=\"publications-section\">
 
-    ";
-        // line 30
+        <!-- FLASH MESSAGES -->
+        ";
+        // line 20
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "flashes", ["success"], "method", false, false, false, 30));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "flashes", ["success"], "method", false, false, false, 20));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 31
-            yield "      <div class=\"flash-success\" style=\"max-width:700px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ ";
+            // line 21
+            yield "            <div class=\"flash-success\">✅ ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
             yield "</div>
-    ";
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 23
         yield "
-    <form method=\"POST\" action=\"";
-        // line 34
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new RuntimeError('Variable "id" does not exist.', 34, $this->source); })())]), "html", null, true);
+        ";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "flashes", ["error"], "method", false, false, false, 24));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 25
+            yield "            <div class=\"flash-error\">❌ ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
+            yield "</div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 27
+        yield "
+        <!-- FORMULAIRE -->
+        <form method=\"POST\" action=\"";
+        // line 29
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("publication_modifier", ["id" => (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new RuntimeError('Variable "id" does not exist.', 29, $this->source); })())]), "html", null, true);
         yield "\">
-      <div class=\"forfaits-wrapper\" style=\"max-width: 700px; margin: 0 auto;\">
-        <table class=\"forfaits-table\">
-          <thead>
-            <tr>
-              <th class=\"th-label\">Champ</th>
-              <th class=\"th-plan\">Valeur</th>
-            </tr>
-          </thead>
-          <tbody>
+            <div class=\"forfaits-wrapper\">
 
-            <tr class=\"category\"><td colspan=\"2\">📋 Informations générales</td></tr>
+                <table class=\"forfaits-table\">
+                    <thead>
+                        <tr>
+                            <th class=\"th-label\">Champ</th>
+                            <th class=\"th-plan\">Valeur</th>
+                        </tr>
+                    </thead>
 
-            <tr>
-              <td>Titre</td>
-              <td><input type=\"text\" name=\"titre\" value=\"";
-        // line 49
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 49, $this->source); })()), "titre", [], "any", false, false, false, 49), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td><textarea name=\"description\" class=\"form-textarea\" rows=\"3\">";
-        // line 53
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 53, $this->source); })()), "description", [], "any", false, false, false, 53), "html", null, true);
-        yield "</textarea></td>
-            </tr>
-            <tr>
-              <td>Type de service</td>
-              <td>
-                <select name=\"typeService\" class=\"form-input\">
-                  <option value=\"Demande\" ";
-        // line 59
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 59, $this->source); })()), "typeService", [], "any", false, false, false, 59) == "Demande")) {
+                    <tbody>
+
+                        <!-- SECTION : Informations générales -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📋 Informations générales</td>
+                        </tr>
+
+                        <tr>
+                            <td>Titre</td>
+                            <td>
+                                <input type=\"text\" name=\"titre\" value=\"";
+        // line 50
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 50, $this->source); })()), "titre", [], "any", false, false, false, 50), "html", null, true);
+        yield "\" class=\"form-input\" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <textarea name=\"description\" class=\"form-textarea\" rows=\"4\">";
+        // line 57
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 57, $this->source); })()), "description", [], "any", false, false, false, 57), "html", null, true);
+        yield "</textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Type de service</td>
+                            <td>
+                                <select name=\"typeService\" class=\"form-input\">
+                                    <option value=\"public\" ";
+        // line 65
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 65, $this->source); })()), "typeService", [], "any", false, false, false, 65) == "public")) {
             yield "selected";
         }
-        yield ">Demande</option>
-                  <option value=\"Offre\"   ";
-        // line 60
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 60, $this->source); })()), "typeService", [], "any", false, false, false, 60) == "Offre")) {
+        yield ">Public</option>
+                                    <option value=\"prive\"  ";
+        // line 66
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 66, $this->source); })()), "typeService", [], "any", false, false, false, 66) == "prive")) {
             yield "selected";
         }
-        yield ">Offre</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>État</td>
-              <td>
-                <select name=\"etatService\" class=\"form-input\">
-                  <option value=\"Active\"     ";
-        // line 68
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 68, $this->source); })()), "etatService", [], "any", false, false, false, 68) == "Active")) {
+        yield ">Privé</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>État</td>
+                            <td>
+                                <select name=\"etatService\" class=\"form-input\">
+                                    <option value=\"publiee\"    ";
+        // line 75
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 75, $this->source); })()), "etatService", [], "any", false, false, false, 75) == "publiee")) {
             yield "selected";
         }
-        yield ">Active</option>
-                  <option value=\"En attente\" ";
-        // line 69
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 69, $this->source); })()), "etatService", [], "any", false, false, false, 69) == "En attente")) {
+        yield ">Publiée</option>
+                                    <option value=\"en_cours\"   ";
+        // line 76
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 76, $this->source); })()), "etatService", [], "any", false, false, false, 76) == "en_cours")) {
             yield "selected";
         }
-        yield ">En attente</option>
-                  <option value=\"Clôturée\"   ";
-        // line 70
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 70, $this->source); })()), "etatService", [], "any", false, false, false, 70) == "Clôturée")) {
+        yield ">En cours</option>
+                                    <option value=\"refusee\"    ";
+        // line 77
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 77, $this->source); })()), "etatService", [], "any", false, false, false, 77) == "refusee")) {
             yield "selected";
         }
-        yield ">Clôturée</option>
-                </select>
-              </td>
-            </tr>
+        yield ">Refusée</option>
+                                    <option value=\"depubliee\"  ";
+        // line 78
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 78, $this->source); })()), "etatService", [], "any", false, false, false, 78) == "depubliee")) {
+            yield "selected";
+        }
+        yield ">Dépubliée</option>
+                                </select>
+                            </td>
+                        </tr>
 
-            <tr class=\"category\"><td colspan=\"2\">📅 Dates & Prix</td></tr>
+                        <!-- SECTION : Dates & Prix -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📅 Dates & Prix</td>
+                        </tr>
 
-            <tr>
-              <td>Date de publication</td>
-              <td><input type=\"text\" name=\"datePublication\" value=\"";
-        // line 79
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 79, $this->source); })()), "datePublication", [], "any", false, false, false, 79), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Date de clôture</td>
-              <td><input type=\"text\" name=\"dateCloture\" value=\"";
-        // line 83
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 83, $this->source); })()), "dateCloture", [], "any", false, false, false, 83), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Prix proposé</td>
-              <td><input type=\"text\" name=\"prixPropose\" value=\"";
-        // line 87
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 87, $this->source); })()), "prixPropose", [], "any", false, false, false, 87), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
+                        <tr>
+                            <input type=\"date\" name=\"datePublication\" 
+                                value=\"";
+        // line 90
+        yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 90, $this->source); })()), "datePublication", [], "any", false, false, false, 90)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 90, $this->source); })()), "datePublication", [], "any", false, false, false, 90), "Y-m-d"), "html", null, true)) : (""));
+        yield "\" 
+                                class=\"form-input\">
+                        </tr>
 
-            <tr class=\"category\"><td colspan=\"2\">📍 Localisation & Catégorie</td></tr>
+                        <tr>
+                            <td>Date de clôture</td>
+                            <td>
+                                <input type=\"date\" name=\"dateCloture\" value=\"";
+        // line 97
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 97, $this->source); })()), "dateCloture", [], "any", false, false, false, 97), "html", null, true);
+        yield "\" class=\"form-input\">
+                            </td>
+                        </tr>
 
-            <tr>
-              <td>Adresse d'exécution</td>
-              <td><input type=\"text\" name=\"adresseExecution\" value=\"";
-        // line 94
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 94, $this->source); })()), "adresseExecution", [], "any", false, false, false, 94), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Catégorie</td>
-              <td><input type=\"text\" name=\"categorie\" value=\"";
-        // line 98
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 98, $this->source); })()), "categorie", [], "any", false, false, false, 98), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Membre</td>
-              <td><input type=\"text\" name=\"membre\" value=\"";
-        // line 102
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["pub"]) || array_key_exists("pub", $context) ? $context["pub"] : (function () { throw new RuntimeError('Variable "pub" does not exist.', 102, $this->source); })()), "membre", [], "any", false, false, false, 102), "html", null, true);
-        yield "\" class=\"form-input\"></td>
-            </tr>
+                        <tr>
+                            <td>Prix proposé</td>
+                            <td>
+                                <input type=\"number\" step=\"0.01\" min=\"0\" name=\"prixPropose\" value=\"";
+        // line 104
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 104, $this->source); })()), "prixPropose", [], "any", false, false, false, 104), "html", null, true);
+        yield "\" class=\"form-input\">
+                            </td>
+                        </tr>
 
-            <!-- Boutons -->
-            <tr class=\"category\"><td colspan=\"2\"></td></tr>
-            <tr>
-                <td style=\"text-align:left;\">
-                    <a href=\"";
-        // line 109
+                        <!-- SECTION : Localisation & Catégorie -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📍 Localisation & Catégorie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adresse d'exécution</td>
+                            <td>
+                                <input type=\"text\" name=\"adresseExecution\" value=\"";
+        // line 116
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 116, $this->source); })()), "adresseExecution", [], "any", false, false, false, 116), "html", null, true);
+        yield "\" class=\"form-input\">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Catégorie</td>
+                            <td>
+                                <select name=\"idCategorie\" class=\"form-input\">
+                                    <option value=\"\">-- Sélectionner une catégorie --</option>
+                                    ";
+        // line 125
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 125, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["cat"]) {
+            // line 126
+            yield "                                        <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cat"], "idCategorie", [], "any", false, false, false, 126), "html", null, true);
+            yield "\" ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["cat"], "idCategorie", [], "any", false, false, false, 126) == CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 126, $this->source); })()), "idCategorie", [], "any", false, false, false, 126))) {
+                yield "selected";
+            }
+            yield ">
+                                            ";
+            // line 127
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["cat"], "libelle", [], "any", false, false, false, 127), "html", null, true);
+            yield "
+                                        </option>
+                                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['cat'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 130
+        yield "                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Membre</td>
+                            <td>
+                                <input type=\"text\" class=\"form-input\" value=\"
+                                    ";
+        // line 138
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["membresIndex"]) || array_key_exists("membresIndex", $context) ? $context["membresIndex"] : (function () { throw new RuntimeError('Variable "membresIndex" does not exist.', 138, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 138, $this->source); })()), "idMembre_demandeur", [], "any", false, false, false, 138), [], "array", false, false, false, 138), "prenom", [], "any", false, false, false, 138) . " ") . CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["membresIndex"]) || array_key_exists("membresIndex", $context) ? $context["membresIndex"] : (function () { throw new RuntimeError('Variable "membresIndex" does not exist.', 138, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, (isset($context["service"]) || array_key_exists("service", $context) ? $context["service"] : (function () { throw new RuntimeError('Variable "service" does not exist.', 138, $this->source); })()), "idMembre_demandeur", [], "any", false, false, false, 138), [], "array", false, false, false, 138), "nom", [], "any", false, false, false, 138)), "html", null, true);
+        yield "
+                                \" readonly>
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Boutons -->
+                        <tr class=\"category\"><td colspan=\"2\"></td></tr>
+
+                        <tr>
+                            <td style=\"text-align:left;\">
+                                <a href=\"";
+        // line 148
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_publication");
         yield "\" class=\"btn-table btn-annuler\">Annuler</a>
-                </td>
-                <td style=\"text-align:center;\">
-                    <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
-                </td>
-            </tr>
+                            </td>
+                            <td style=\"text-align:center;\">
+                                <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
+                            </td>
+                        </tr>
 
-          </tbody>
-        </table>
-      </div>
-    </form>
-  </section>
+                    </tbody>
+                </table>
+
+            </div>
+        </form>
+
+    </section>
 
 </div>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -311,133 +387,175 @@ class __TwigTemplate_46556ed5e0b8dd072671c1e5ceb502ee extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  268 => 109,  258 => 102,  251 => 98,  244 => 94,  234 => 87,  227 => 83,  220 => 79,  206 => 70,  200 => 69,  194 => 68,  181 => 60,  175 => 59,  166 => 53,  159 => 49,  141 => 34,  138 => 33,  129 => 31,  125 => 30,  110 => 17,  108 => 16,  105 => 15,  103 => 8,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  341 => 148,  328 => 138,  318 => 130,  309 => 127,  300 => 126,  296 => 125,  284 => 116,  269 => 104,  259 => 97,  249 => 90,  232 => 78,  226 => 77,  220 => 76,  214 => 75,  200 => 66,  194 => 65,  183 => 57,  173 => 50,  149 => 29,  145 => 27,  136 => 25,  132 => 24,  129 => 23,  120 => 21,  116 => 20,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends \"base.html.twig\" %}
 
-{% block title %}Modifier la publication{% endblock %}
+{% block title %}Modifier une publication{% endblock %}
 
 {% block body %}
 
-{# Données fixes — à remplacer par des variables Doctrine plus tard #}
-{% set publications = {
-  1: { titre: 'Taille de haies',      description: \"Besoin d'un coup de main pour tailler mes haies de 10m.\", typeService: 'Demande', etatService: 'Active',     datePublication: '01/03/2025', dateCloture: '30/03/2025', prixPropose: '25,00 €', adresseExecution: 'Lyon 3e',      categorie: 'Jardinage',    membre: 'M. Dupont'  },
-  2: { titre: 'Prêt perceuse',        description: 'Je prête ma perceuse pour le week-end.',                  typeService: 'Offre',   etatService: 'Active',     datePublication: '05/03/2025', dateCloture: '15/03/2025', prixPropose: '0,00 €',  adresseExecution: 'Lyon 6e',      categorie: 'Outillage',    membre: 'Mme Martin' },
-  3: { titre: 'Garde de chat',        description: \"Cherche quelqu'un pour garder mon chat pendant 1 semaine.\", typeService: 'Demande', etatService: 'Clôturée', datePublication: '10/02/2025', dateCloture: '17/02/2025', prixPropose: '50,00 €', adresseExecution: 'Lyon 2e',      categorie: 'Animaux',      membre: 'M. Bernard' },
-  4: { titre: 'Cours de guitare',     description: 'Propose des cours de guitare pour débutants, 1h par semaine.', typeService: 'Offre', etatService: 'En attente', datePublication: '12/03/2025', dateCloture: '—',         prixPropose: '15,00 €', adresseExecution: 'Lyon 1er',     categorie: 'Cours',        membre: 'Mme Leroy'  },
-  5: { titre: 'Transport de meubles', description: \"Besoin d'aide pour déménager un canapé et une armoire.\",  typeService: 'Demande', etatService: 'Active',     datePublication: '14/03/2025', dateCloture: '21/03/2025', prixPropose: '40,00 €', adresseExecution: 'Villeurbanne', categorie: 'Déménagement', membre: 'M. Petit'   }
-} %}
-
-{% set pub = publications[id] %}
-
 <div class=\"home\">
 
-  <!-- HERO -->
-  <section class=\"dashboard-hero\">
-    <div class=\"dashboard-hero-text\">
-      <h1 class=\"hero-title\">Modifier la <span>publication</span></h1>
-      <p class=\"hero-desc\">Modifiez les informations de cette publication.</p>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class=\"dashboard-hero\">
+        <div class=\"dashboard-hero-text\">
+            <h1 class=\"hero-title\">Modifier la <span>publication</span></h1>
+            <p class=\"hero-desc\">Ajustez les informations de cette publication.</p>
+        </div>
+    </section>
 
-  <section class=\"publications-section\">
+    <section class=\"publications-section\">
 
-    {% for message in app.flashes('success') %}
-      <div class=\"flash-success\" style=\"max-width:700px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
-    {% endfor %}
+        <!-- FLASH MESSAGES -->
+        {% for message in app.flashes('success') %}
+            <div class=\"flash-success\">✅ {{ message }}</div>
+        {% endfor %}
 
-    <form method=\"POST\" action=\"{{ path('publication_modifier', {id: id}) }}\">
-      <div class=\"forfaits-wrapper\" style=\"max-width: 700px; margin: 0 auto;\">
-        <table class=\"forfaits-table\">
-          <thead>
-            <tr>
-              <th class=\"th-label\">Champ</th>
-              <th class=\"th-plan\">Valeur</th>
-            </tr>
-          </thead>
-          <tbody>
+        {% for message in app.flashes('error') %}
+            <div class=\"flash-error\">❌ {{ message }}</div>
+        {% endfor %}
 
-            <tr class=\"category\"><td colspan=\"2\">📋 Informations générales</td></tr>
+        <!-- FORMULAIRE -->
+        <form method=\"POST\" action=\"{{ path('publication_modifier', {id: id}) }}\">
+            <div class=\"forfaits-wrapper\">
 
-            <tr>
-              <td>Titre</td>
-              <td><input type=\"text\" name=\"titre\" value=\"{{ pub.titre }}\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td><textarea name=\"description\" class=\"form-textarea\" rows=\"3\">{{ pub.description }}</textarea></td>
-            </tr>
-            <tr>
-              <td>Type de service</td>
-              <td>
-                <select name=\"typeService\" class=\"form-input\">
-                  <option value=\"Demande\" {% if pub.typeService == 'Demande' %}selected{% endif %}>Demande</option>
-                  <option value=\"Offre\"   {% if pub.typeService == 'Offre'   %}selected{% endif %}>Offre</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>État</td>
-              <td>
-                <select name=\"etatService\" class=\"form-input\">
-                  <option value=\"Active\"     {% if pub.etatService == 'Active'     %}selected{% endif %}>Active</option>
-                  <option value=\"En attente\" {% if pub.etatService == 'En attente' %}selected{% endif %}>En attente</option>
-                  <option value=\"Clôturée\"   {% if pub.etatService == 'Clôturée'   %}selected{% endif %}>Clôturée</option>
-                </select>
-              </td>
-            </tr>
+                <table class=\"forfaits-table\">
+                    <thead>
+                        <tr>
+                            <th class=\"th-label\">Champ</th>
+                            <th class=\"th-plan\">Valeur</th>
+                        </tr>
+                    </thead>
 
-            <tr class=\"category\"><td colspan=\"2\">📅 Dates & Prix</td></tr>
+                    <tbody>
 
-            <tr>
-              <td>Date de publication</td>
-              <td><input type=\"text\" name=\"datePublication\" value=\"{{ pub.datePublication }}\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Date de clôture</td>
-              <td><input type=\"text\" name=\"dateCloture\" value=\"{{ pub.dateCloture }}\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Prix proposé</td>
-              <td><input type=\"text\" name=\"prixPropose\" value=\"{{ pub.prixPropose }}\" class=\"form-input\"></td>
-            </tr>
+                        <!-- SECTION : Informations générales -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📋 Informations générales</td>
+                        </tr>
 
-            <tr class=\"category\"><td colspan=\"2\">📍 Localisation & Catégorie</td></tr>
+                        <tr>
+                            <td>Titre</td>
+                            <td>
+                                <input type=\"text\" name=\"titre\" value=\"{{ service.titre }}\" class=\"form-input\" required>
+                            </td>
+                        </tr>
 
-            <tr>
-              <td>Adresse d'exécution</td>
-              <td><input type=\"text\" name=\"adresseExecution\" value=\"{{ pub.adresseExecution }}\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Catégorie</td>
-              <td><input type=\"text\" name=\"categorie\" value=\"{{ pub.categorie }}\" class=\"form-input\"></td>
-            </tr>
-            <tr>
-              <td>Membre</td>
-              <td><input type=\"text\" name=\"membre\" value=\"{{ pub.membre }}\" class=\"form-input\"></td>
-            </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <textarea name=\"description\" class=\"form-textarea\" rows=\"4\">{{ service.description }}</textarea>
+                            </td>
+                        </tr>
 
-            <!-- Boutons -->
-            <tr class=\"category\"><td colspan=\"2\"></td></tr>
-            <tr>
-                <td style=\"text-align:left;\">
-                    <a href=\"{{ path('gestion_publication') }}\" class=\"btn-table btn-annuler\">Annuler</a>
-                </td>
-                <td style=\"text-align:center;\">
-                    <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
-                </td>
-            </tr>
+                        <tr>
+                            <td>Type de service</td>
+                            <td>
+                                <select name=\"typeService\" class=\"form-input\">
+                                    <option value=\"public\" {% if service.typeService == 'public' %}selected{% endif %}>Public</option>
+                                    <option value=\"prive\"  {% if service.typeService == 'prive'  %}selected{% endif %}>Privé</option>
+                                </select>
+                            </td>
+                        </tr>
 
-          </tbody>
-        </table>
-      </div>
-    </form>
-  </section>
+                        <tr>
+                            <td>État</td>
+                            <td>
+                                <select name=\"etatService\" class=\"form-input\">
+                                    <option value=\"publiee\"    {% if service.etatService == 'publiee'    %}selected{% endif %}>Publiée</option>
+                                    <option value=\"en_cours\"   {% if service.etatService == 'en_cours'   %}selected{% endif %}>En cours</option>
+                                    <option value=\"refusee\"    {% if service.etatService == 'refusee'    %}selected{% endif %}>Refusée</option>
+                                    <option value=\"depubliee\"  {% if service.etatService == 'depubliee'  %}selected{% endif %}>Dépubliée</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Dates & Prix -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📅 Dates & Prix</td>
+                        </tr>
+
+                        <tr>
+                            <input type=\"date\" name=\"datePublication\" 
+                                value=\"{{ service.datePublication ? service.datePublication|date('Y-m-d') : '' }}\" 
+                                class=\"form-input\">
+                        </tr>
+
+                        <tr>
+                            <td>Date de clôture</td>
+                            <td>
+                                <input type=\"date\" name=\"dateCloture\" value=\"{{ service.dateCloture }}\" class=\"form-input\">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Prix proposé</td>
+                            <td>
+                                <input type=\"number\" step=\"0.01\" min=\"0\" name=\"prixPropose\" value=\"{{ service.prixPropose }}\" class=\"form-input\">
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Localisation & Catégorie -->
+                        <tr class=\"category\">
+                            <td colspan=\"2\">📍 Localisation & Catégorie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adresse d'exécution</td>
+                            <td>
+                                <input type=\"text\" name=\"adresseExecution\" value=\"{{ service.adresseExecution }}\" class=\"form-input\">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Catégorie</td>
+                            <td>
+                                <select name=\"idCategorie\" class=\"form-input\">
+                                    <option value=\"\">-- Sélectionner une catégorie --</option>
+                                    {% for cat in categories %}
+                                        <option value=\"{{ cat.idCategorie }}\" {% if cat.idCategorie == service.idCategorie %}selected{% endif %}>
+                                            {{ cat.libelle }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Membre</td>
+                            <td>
+                                <input type=\"text\" class=\"form-input\" value=\"
+                                    {{ membresIndex[service.idMembre_demandeur].prenom ~ ' ' ~ membresIndex[service.idMembre_demandeur].nom }}
+                                \" readonly>
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Boutons -->
+                        <tr class=\"category\"><td colspan=\"2\"></td></tr>
+
+                        <tr>
+                            <td style=\"text-align:left;\">
+                                <a href=\"{{ path('gestion_publication') }}\" class=\"btn-table btn-annuler\">Annuler</a>
+                            </td>
+                            <td style=\"text-align:center;\">
+                                <button type=\"submit\" class=\"btn-table btn-modifier\">💾 Enregistrer</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </form>
+
+    </section>
 
 </div>
+
 {% endblock %}
 ", "modif_publication.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\modif_publication.html.twig");
     }

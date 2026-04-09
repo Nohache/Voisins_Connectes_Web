@@ -321,7 +321,6 @@ class __TwigTemplate_e7e261d72c055766ce8a70451fda7574 extends Template
   </section>
 
 </div>
-{% endblock %}
-", "inscription.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\inscription.html.twig");
+{% endblock %}", "inscription.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\inscription.html.twig");
     }
 }

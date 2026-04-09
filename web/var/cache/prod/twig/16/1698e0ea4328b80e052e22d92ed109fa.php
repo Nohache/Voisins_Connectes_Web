@@ -1,0 +1,196 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* accueil.html.twig */
+class __TwigTemplate_9102f1668a246d5ed58a885f06dcb209 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'body' => [$this, 'block_body'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $this->parent = $this->load("base.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+    }
+
+    // line 3
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_title(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        yield "Accueil gestionnaire";
+        yield from [];
+    }
+
+    // line 5
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_body(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        // line 6
+        yield "<div class=\"home\">
+
+  <!-- HEADER BIENVENUE -->
+  <section class=\"dashboard-hero\">
+    <div class=\"dashboard-hero-text\">
+      <h1 class=\"hero-title\">Bienvenue sur votre <span>tableau de bord</span></h1>
+      <p class=\"hero-desc\">Gérez les forfaits, validez les demandes et supervisez les publications de la plateforme VoisinsConnectés.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class=\"stats\">
+    <div class=\"stat-item\">
+      <span class=\"stat-num\">";
+        // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["nb_adhesions_en_attente"] ?? null), "html", null, true);
+        yield "</span>
+      <span class=\"stat-label\">Demandes d'adhésion en attente</span>
+    </div>
+    <div class=\"stat-item\">
+      <span class=\"stat-num\">";
+        // line 23
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["nb_publications_en_attente"] ?? null), "html", null, true);
+        yield "</span>
+      <span class=\"stat-label\">Publications à valider</span>
+    </div>
+    <div class=\"stat-item\">
+      <span class=\"stat-num\">";
+        // line 27
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["nb_forfaits"] ?? null), "html", null, true);
+        yield "</span>
+      <span class=\"stat-label\">Forfaits actifs</span>
+    </div>
+  </section>
+
+  <!-- RACCOURCIS -->
+  <section class=\"shortcuts\">
+    <h2 class=\"section-title\">Vos fonctionnalités</h2>
+    <p class=\"section-sub\">Accédez rapidement aux outils de gestion de la plateforme.</p>
+
+    <div class=\"shortcuts-grid\">
+
+      <a href=\"";
+        // line 39
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfaits");
+        yield "\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">💼</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Gestion des forfaits</p>
+          <p class=\"shortcut-text\">Créez, modifiez et gérez les forfaits proposés aux utilisateurs de la plateforme.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+      <a href=\"";
+        // line 48
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("gestion_publication");
+        yield "\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">📰</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Gestion des publications</p>
+          <p class=\"shortcut-text\">Supervisez l'ensemble des publications actives sur la plateforme.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+      <a href=\"";
+        // line 57
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_adhesion");
+        yield "\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">👥</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Demandes d'adhésion</p>
+          <p class=\"shortcut-text\">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+      <a href=\"";
+        // line 66
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("demande_publication");
+        yield "\" class=\"shortcut-card\">
+        <div class=\"shortcut-icon\">📋</div>
+        <div class=\"shortcut-body\">
+          <p class=\"shortcut-title\">Demandes de publication</p>
+          <p class=\"shortcut-text\">Examinez et validez les demandes de publication soumises par les membres.</p>
+        </div>
+        <span class=\"shortcut-arrow\">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>
+";
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "accueil.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  150 => 66,  138 => 57,  126 => 48,  114 => 39,  99 => 27,  92 => 23,  85 => 19,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("", "accueil.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\accueil.html.twig");
+    }
+}

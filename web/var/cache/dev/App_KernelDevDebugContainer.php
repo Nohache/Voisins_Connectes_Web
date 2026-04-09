@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerFnNZIWM\App_KernelDevDebugContainer([
     'container.build_hash' => 'FnNZIWM',
-    'container.build_id' => '99a08ae3',
-    'container.build_time' => 1774617919,
+    'container.build_id' => '81faa1cf',
+    'container.build_time' => 1775742941,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerFnNZIWM');

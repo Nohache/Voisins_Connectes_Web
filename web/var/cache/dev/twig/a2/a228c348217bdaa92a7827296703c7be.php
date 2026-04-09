@@ -97,134 +97,14 @@ class __TwigTemplate_a58767964b96919a45e64950ee321b01 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "<div class=\"home\">
-
-  <!-- HERO -->
-  <section class=\"dashboard-hero\">
-    <div class=\"dashboard-hero-text\">
-      <h1 class=\"hero-title\">Ajouter un <span>forfait</span></h1>
-      <p class=\"hero-desc\">Créez un nouveau forfait et définissez ses fonctionnalités.</p>
-    </div>
-  </section>
-
-  <section class=\"forfaits-section\">
-    <h2 class=\"section-title\">Nouveau forfait</h2>
-
-    ";
-        // line 19
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "flashes", ["success"], "method", false, false, false, 19));
-        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 20
-            yield "      <div class=\"flash-success\">✅ ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
-            yield "</div>
-    ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        yield "  ";
+        $context["forfait"] = ["nomForfait" => "", "description" => "", "prix" => 0, "duree" => 0, "fonc_parametrage" => "0", "fonc_perimetreIntervention" => "0", "fonc_notifications" => "0", "fonc_locationMateriel" => "0", "fonc_prestationService" => "0", "fonc_numeroProfil" => "0", "fonc_photosProfil" => "0", "fonc_accompagnementPrioritaire" => "0"];
+        // line 20
         yield "
-    <form method=\"POST\" action=\"";
-        // line 23
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_ajouter");
-        yield "\">
-    <div class=\"forfaits-wrapper\">
-      <table class=\"forfaits-table\">
-
-        <!-- EN-TÊTE : champs nom / prix / durée -->
-        <thead>
-          <tr>
-            <th class=\"th-label\"></th>
-            <th class=\"th-plan\" style=\"min-width: 220px;\">
-              <input type=\"text\" name=\"nomForfait\" placeholder=\"Nom du forfait\" class=\"form-input\" style=\"margin: 0.5rem 0; text-align:center;\" required>
-              <div style=\"display:flex; gap:0.5rem; align-items:center; justify-content:center; margin-top:0.3rem;\">
-                <input type=\"number\" name=\"prix\" value=\"0\" step=\"0.01\" min=\"0\" class=\"form-input\" style=\"width:80px; text-align:center;\" required>
-                <span style=\"color:var(--gris); font-size:0.85rem;\">€ /</span>
-                <select name=\"duree\" id=\"duree\" class=\"form-input\" style=\"width:90px;\">
-                  <option value=\"gratuit\">gratuit</option>
-                  <option value=\"mois\">mois</option>
-                  <option value=\"an\">an</option>
-                </select>
-              </div>
-            </th>
-          </tr>
-        </thead>
-
-        <!-- FONCTIONNALITÉS avec cases à cocher -->
-        <tbody>
-          <tr class=\"category\"><td colspan=\"2\">🔧 Proposer des services</td></tr>
-          <tr>
-            <td>Paramétrage</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_parametrage\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Périmètre d'intervention</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_perimetreIntervention\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Notifications « Nouvelles demandes »</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_notifications\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">🙋 Répondre aux demandes</td></tr>
-          <tr>
-            <td>Location de matériel</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_locationMateriel\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Prestation de service</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_prestationService\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">👤 Profil utilisateur</td></tr>
-          <tr>
-            <td>Numéro de téléphone sur le profil</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_numeroProfil\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Photos des réalisations sur le profil</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_photosProfil\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">🎧 Assistance</td></tr>
-          <tr>
-            <td>Accompagnement personnalisé et prioritaire</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_accompagnementPrioritaire\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <!-- BOUTONS -->
-          <tr class=\"category\"><td colspan=\"2\"></td></tr>
-          <tr>
-            <td style=\"text-align:left;\">
-              <a href=\"";
-        // line 92
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfaits");
-        yield "\" class=\"btn-table btn-annuler\">Retour</a>
-            </td>
-            <td style=\"text-align:center; padding: 1rem;\">
-              <button type=\"submit\" class=\"btn-primary\">✨ Créer le forfait</button>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
-    </form>
-  </section>
-
-</div>
-
-<script>
-  document.getElementById('duree').addEventListener('change', function() {
-    if (this.value === 'gratuit') {
-      document.querySelector('input[name=\"prix\"]').value = '0';
-    }
-  });
-</script>
-
-";
+  ";
+        // line 21
+        yield from $this->load("new_forfait.html.twig", 21)->unwrap()->yield(CoreExtension::merge($context, ["formTitle" => "Ajouter un forfait", "formSubtitle" => "Créez un nouveau forfait et définissez ses fonctionnalités.", "formAction" => $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfait_ajouter"), "submitLabel" => "✨ Créer le forfait", "cancelPath" => $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forfaits"), "forfait" =>         // line 27
+(isset($context["forfait"]) || array_key_exists("forfait", $context) ? $context["forfait"] : (function () { throw new RuntimeError('Variable "forfait" does not exist.', 27, $this->source); })())]));
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -255,7 +135,7 @@ class __TwigTemplate_a58767964b96919a45e64950ee321b01 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  203 => 92,  131 => 23,  128 => 22,  119 => 20,  115 => 19,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  107 => 27,  106 => 21,  103 => 20,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -265,116 +145,29 @@ class __TwigTemplate_a58767964b96919a45e64950ee321b01 extends Template
 {% block title %}Ajouter un forfait{% endblock %}
 
 {% block body %}
-<div class=\"home\">
+  {% set forfait = {
+    'nomForfait': '',
+    'description': '',
+    'prix': 0,
+    'duree': 0,
+    'fonc_parametrage': '0',
+    'fonc_perimetreIntervention': '0',
+    'fonc_notifications': '0',
+    'fonc_locationMateriel': '0',
+    'fonc_prestationService': '0',
+    'fonc_numeroProfil': '0',
+    'fonc_photosProfil': '0',
+    'fonc_accompagnementPrioritaire': '0'
+  } %}
 
-  <!-- HERO -->
-  <section class=\"dashboard-hero\">
-    <div class=\"dashboard-hero-text\">
-      <h1 class=\"hero-title\">Ajouter un <span>forfait</span></h1>
-      <p class=\"hero-desc\">Créez un nouveau forfait et définissez ses fonctionnalités.</p>
-    </div>
-  </section>
-
-  <section class=\"forfaits-section\">
-    <h2 class=\"section-title\">Nouveau forfait</h2>
-
-    {% for message in app.flashes('success') %}
-      <div class=\"flash-success\">✅ {{ message }}</div>
-    {% endfor %}
-
-    <form method=\"POST\" action=\"{{ path('app_forfait_ajouter') }}\">
-    <div class=\"forfaits-wrapper\">
-      <table class=\"forfaits-table\">
-
-        <!-- EN-TÊTE : champs nom / prix / durée -->
-        <thead>
-          <tr>
-            <th class=\"th-label\"></th>
-            <th class=\"th-plan\" style=\"min-width: 220px;\">
-              <input type=\"text\" name=\"nomForfait\" placeholder=\"Nom du forfait\" class=\"form-input\" style=\"margin: 0.5rem 0; text-align:center;\" required>
-              <div style=\"display:flex; gap:0.5rem; align-items:center; justify-content:center; margin-top:0.3rem;\">
-                <input type=\"number\" name=\"prix\" value=\"0\" step=\"0.01\" min=\"0\" class=\"form-input\" style=\"width:80px; text-align:center;\" required>
-                <span style=\"color:var(--gris); font-size:0.85rem;\">€ /</span>
-                <select name=\"duree\" id=\"duree\" class=\"form-input\" style=\"width:90px;\">
-                  <option value=\"gratuit\">gratuit</option>
-                  <option value=\"mois\">mois</option>
-                  <option value=\"an\">an</option>
-                </select>
-              </div>
-            </th>
-          </tr>
-        </thead>
-
-        <!-- FONCTIONNALITÉS avec cases à cocher -->
-        <tbody>
-          <tr class=\"category\"><td colspan=\"2\">🔧 Proposer des services</td></tr>
-          <tr>
-            <td>Paramétrage</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_parametrage\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Périmètre d'intervention</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_perimetreIntervention\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Notifications « Nouvelles demandes »</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_notifications\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">🙋 Répondre aux demandes</td></tr>
-          <tr>
-            <td>Location de matériel</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_locationMateriel\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Prestation de service</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_prestationService\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">👤 Profil utilisateur</td></tr>
-          <tr>
-            <td>Numéro de téléphone sur le profil</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_numeroProfil\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-          <tr>
-            <td>Photos des réalisations sur le profil</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_photosProfil\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <tr class=\"category\"><td colspan=\"2\">🎧 Assistance</td></tr>
-          <tr>
-            <td>Accompagnement personnalisé et prioritaire</td>
-            <td><label class=\"toggle-label\"><input type=\"checkbox\" name=\"fonc_accompagnementPrioritaire\" class=\"toggle-checkbox\"><span class=\"toggle-switch\"></span></label></td>
-          </tr>
-
-          <!-- BOUTONS -->
-          <tr class=\"category\"><td colspan=\"2\"></td></tr>
-          <tr>
-            <td style=\"text-align:left;\">
-              <a href=\"{{ path('app_forfaits') }}\" class=\"btn-table btn-annuler\">Retour</a>
-            </td>
-            <td style=\"text-align:center; padding: 1rem;\">
-              <button type=\"submit\" class=\"btn-primary\">✨ Créer le forfait</button>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
-    </form>
-  </section>
-
-</div>
-
-<script>
-  document.getElementById('duree').addEventListener('change', function() {
-    if (this.value === 'gratuit') {
-      document.querySelector('input[name=\"prix\"]').value = '0';
-    }
-  });
-</script>
-
-{% endblock %}
-", "ajouter_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\ajouter_forfait.html.twig");
+  {% include 'new_forfait.html.twig' with {
+    formTitle: 'Ajouter un forfait',
+    formSubtitle: 'Créez un nouveau forfait et définissez ses fonctionnalités.',
+    formAction: path('app_forfait_ajouter'),
+    submitLabel: '✨ Créer le forfait',
+    cancelPath: path('app_forfaits'),
+    forfait: forfait
+  } %}
+{% endblock %}", "ajouter_forfait.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\ajouter_forfait.html.twig");
     }
 }

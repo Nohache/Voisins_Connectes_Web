@@ -57,19 +57,14 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         // line 5
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
-        <link rel=\"icon\"  href=\"";
-        // line 6
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("voisins_connectes_arrondi.png"), "html", null, true);
-        yield "\">
+        <link rel=\"icon\" href=\"/images/voisins_connectes_arrondi.png\">
         ";
         // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
         // line 10
-        yield "
-        ";
-        // line 11
+        yield "        ";
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 14
+        // line 13
         yield "    </head>
 <body>
   <div class=\"home\">
@@ -77,11 +72,11 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
     <section class=\"forfaits-section\">
 
       ";
-        // line 20
+        // line 19
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "flashes", ["error"], "method", false, false, false, 20));
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 19, $this->source); })()), "flashes", ["error"], "method", false, false, false, 19));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 21
+            // line 20
             yield "        <div class=\"flash-error\" style=\"max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;\">❌ ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
             yield "</div>
@@ -90,11 +85,27 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        yield "
+      ";
         // line 23
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "flashes", ["success"], "method", false, false, false, 23));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 24
+            yield "        <div class=\"flash-success\" style=\"max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #dcfce7; color: #16a34a; border-radius: 1rem; font-weight: 500;\">✅ ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["message"], "html", null, true);
+            yield "</div>
+      ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['message'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 26
         yield "
       <div class=\"forfaits-wrapper\" style=\"max-width: 500px;\">
         <form method=\"POST\" action=\"";
-        // line 25
+        // line 28
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("connexion");
         yield "\">
           <table class=\"forfaits-table\">
@@ -118,7 +129,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
               <tr>
                 <td>Mot de passe</td>
                 <td>
-                  <input type=\"password\" name=\"password\" class=\"form-input\" placeholder=\"••••••••\" required>
+                  <input type=\"password\" name=\"motDePasse\" class=\"form-input\" placeholder=\"••••••••\" required>
                 </td>
               </tr>
 
@@ -138,6 +149,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
 
   </div>
 </body>
+</html>
 ";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -185,9 +197,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 8
-        yield "            <link rel=\"stylesheet\" href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("build/app.css"), "html", null, true);
-        yield "\">
+        yield "            <link rel=\"stylesheet\" href=\"/styles/app.css\">
         ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -198,7 +208,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         yield from [];
     }
 
-    // line 11
+    // line 10
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -211,10 +221,10 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 12
+        // line 11
         yield "            ";
         yield from $this->unwrap()->yieldBlock('importmap', $context, $blocks);
-        // line 13
+        // line 12
         yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -225,7 +235,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
         yield from [];
     }
 
-    // line 12
+    // line 11
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -269,7 +279,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  229 => 12,  218 => 13,  215 => 12,  202 => 11,  188 => 8,  175 => 7,  152 => 5,  98 => 25,  94 => 23,  85 => 21,  81 => 20,  73 => 14,  71 => 11,  68 => 10,  66 => 7,  62 => 6,  58 => 5,  52 => 1,);
+        return array (  239 => 11,  228 => 12,  225 => 11,  212 => 10,  200 => 8,  187 => 7,  164 => 5,  109 => 28,  105 => 26,  96 => 24,  92 => 23,  89 => 22,  80 => 20,  76 => 19,  68 => 13,  65 => 10,  63 => 7,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -279,11 +289,10 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Connexion - VoisinsConnectés{% endblock %}</title>
-        <link rel=\"icon\"  href=\"{{ asset('voisins_connectes_arrondi.png') }}\">
+        <link rel=\"icon\" href=\"/images/voisins_connectes_arrondi.png\">
         {% block stylesheets %}
-            <link rel=\"stylesheet\" href=\"{{ asset('build/app.css') }}\">
+            <link rel=\"stylesheet\" href=\"/styles/app.css\">
         {% endblock %}
-
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
@@ -295,6 +304,10 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
 
       {% for message in app.flashes('error') %}
         <div class=\"flash-error\" style=\"max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;\">❌ {{ message }}</div>
+      {% endfor %}
+
+      {% for message in app.flashes('success') %}
+        <div class=\"flash-success\" style=\"max-width:500px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #dcfce7; color: #16a34a; border-radius: 1rem; font-weight: 500;\">✅ {{ message }}</div>
       {% endfor %}
 
       <div class=\"forfaits-wrapper\" style=\"max-width: 500px;\">
@@ -320,7 +333,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
               <tr>
                 <td>Mot de passe</td>
                 <td>
-                  <input type=\"password\" name=\"password\" class=\"form-input\" placeholder=\"••••••••\" required>
+                  <input type=\"password\" name=\"motDePasse\" class=\"form-input\" placeholder=\"••••••••\" required>
                 </td>
               </tr>
 
@@ -340,6 +353,7 @@ class __TwigTemplate_76912b88842e867119d56c454c76880c extends Template
 
   </div>
 </body>
+</html>
 ", "connexion.html.twig", "C:\\laragon\\www\\Voisins connecté web\\web\\templates\\connexion.html.twig");
     }
 }

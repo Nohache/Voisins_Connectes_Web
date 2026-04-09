@@ -3,113 +3,27 @@
 {% block title %}Ajouter un forfait{% endblock %}
 
 {% block body %}
-<div class="home">
+  {% set forfait = {
+    'nomForfait': '',
+    'description': '',
+    'prix': 0,
+    'duree': 0,
+    'fonc_parametrage': '0',
+    'fonc_perimetreIntervention': '0',
+    'fonc_notifications': '0',
+    'fonc_locationMateriel': '0',
+    'fonc_prestationService': '0',
+    'fonc_numeroProfil': '0',
+    'fonc_photosProfil': '0',
+    'fonc_accompagnementPrioritaire': '0'
+  } %}
 
-  <!-- HERO -->
-  <section class="dashboard-hero">
-    <div class="dashboard-hero-text">
-      <h1 class="hero-title">Ajouter un <span>forfait</span></h1>
-      <p class="hero-desc">Créez un nouveau forfait et définissez ses fonctionnalités.</p>
-    </div>
-  </section>
-
-  <section class="forfaits-section">
-    <h2 class="section-title">Nouveau forfait</h2>
-
-    {% for message in app.flashes('success') %}
-      <div class="flash-success">✅ {{ message }}</div>
-    {% endfor %}
-
-    <form method="POST" action="{{ path('app_forfait_ajouter') }}">
-    <div class="forfaits-wrapper">
-      <table class="forfaits-table">
-
-        <!-- EN-TÊTE : champs nom / prix / durée -->
-        <thead>
-          <tr>
-            <th class="th-label"></th>
-            <th class="th-plan" style="min-width: 220px;">
-              <input type="text" name="nomForfait" placeholder="Nom du forfait" class="form-input" style="margin: 0.5rem 0; text-align:center;" required>
-              <div style="display:flex; gap:0.5rem; align-items:center; justify-content:center; margin-top:0.3rem;">
-                <input type="number" name="prix" value="0" step="0.01" min="0" class="form-input" style="width:80px; text-align:center;" required>
-                <span style="color:var(--gris); font-size:0.85rem;">€ /</span>
-                <select name="duree" id="duree" class="form-input" style="width:90px;">
-                  <option value="gratuit">gratuit</option>
-                  <option value="mois">mois</option>
-                  <option value="an">an</option>
-                </select>
-              </div>
-            </th>
-          </tr>
-        </thead>
-
-        <!-- FONCTIONNALITÉS avec cases à cocher -->
-        <tbody>
-          <tr class="category"><td colspan="2">🔧 Proposer des services</td></tr>
-          <tr>
-            <td>Paramétrage</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_parametrage" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-          <tr>
-            <td>Périmètre d'intervention</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_perimetreIntervention" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-          <tr>
-            <td>Notifications « Nouvelles demandes »</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_notifications" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-
-          <tr class="category"><td colspan="2">🙋 Répondre aux demandes</td></tr>
-          <tr>
-            <td>Location de matériel</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_locationMateriel" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-          <tr>
-            <td>Prestation de service</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_prestationService" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-
-          <tr class="category"><td colspan="2">👤 Profil utilisateur</td></tr>
-          <tr>
-            <td>Numéro de téléphone sur le profil</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_numeroProfil" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-          <tr>
-            <td>Photos des réalisations sur le profil</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_photosProfil" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-
-          <tr class="category"><td colspan="2">🎧 Assistance</td></tr>
-          <tr>
-            <td>Accompagnement personnalisé et prioritaire</td>
-            <td><label class="toggle-label"><input type="checkbox" name="fonc_accompagnementPrioritaire" class="toggle-checkbox"><span class="toggle-switch"></span></label></td>
-          </tr>
-
-          <!-- BOUTONS -->
-          <tr class="category"><td colspan="2"></td></tr>
-          <tr>
-            <td style="text-align:left;">
-              <a href="{{ path('app_forfaits') }}" class="btn-table btn-annuler">Retour</a>
-            </td>
-            <td style="text-align:center; padding: 1rem;">
-              <button type="submit" class="btn-primary">✨ Créer le forfait</button>
-            </td>
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
-    </form>
-  </section>
-
-</div>
-
-<script>
-  document.getElementById('duree').addEventListener('change', function() {
-    if (this.value === 'gratuit') {
-      document.querySelector('input[name="prix"]').value = '0';
-    }
-  });
-</script>
-
+  {% include 'new_forfait.html.twig' with {
+    formTitle: 'Ajouter un forfait',
+    formSubtitle: 'Créez un nouveau forfait et définissez ses fonctionnalités.',
+    formAction: path('app_forfait_ajouter'),
+    submitLabel: '✨ Créer le forfait',
+    cancelPath: path('app_forfaits'),
+    forfait: forfait
+  } %}
 {% endblock %}

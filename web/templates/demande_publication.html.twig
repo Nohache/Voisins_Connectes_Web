@@ -5,21 +5,24 @@
 {% block body %}
 <div class="home">
 
-  <!-- HERO -->
   <section class="dashboard-hero">
     <div class="dashboard-hero-text">
       <h1 class="hero-title">Demandes de <span>publication</span></h1>
-      <p class="hero-desc">Validez ou refusez les demandes de publication soumises par les membres de la plateforme.</p>
+      <p class="hero-desc">Validez ou refusez les demandes de publication soumises par les membres.</p>
     </div>
   </section>
 
   {% for message in app.flashes('success') %}
-    <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+    <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #4CAF50; color: white; border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+  {% endfor %}
+
+  {% for message in app.flashes('error') %}
+    <div class="flash-error" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #f44336; color: white; border-radius: 1rem; font-weight: 500;">❌ {{ message }}</div>
   {% endfor %}
 
   <section class="publications-section">
     <h2 class="section-title">Demandes en attente</h2>
-    <p class="section-sub">Liste des publications soumises par les membres en attente de validation.</p>
+    <p class="section-sub">Liste des publications en attente de validation.</p>
 
     <div class="publications-wrapper">
       <table class="publications-table">
@@ -31,73 +34,52 @@
             <th>Prix proposé</th>
             <th>Adresse</th>
             <th>Catégorie</th>
-            <th>Membre</th>
-            <th>Date demande</th>
-            <th>État</th>
+            <th>Membre demandeur</th>
+            <th>Date publication</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Taille de haies</td>
-            <td class="td-desc">Besoin d'un coup de main pour tailler mes haies de 10m.</td>
-            <td><span class="badge badge-demande">Demande</span></td>
-            <td>25,00 €</td>
-            <td>Lyon 3e</td>
-            <td>Jardinage</td>
-            <td>M. Dupont</td>
-            <td>12/03/2025</td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Cours de guitare</td>
-            <td class="td-desc">Propose des cours de guitare pour débutants, 1h par semaine.</td>
-            <td><span class="badge badge-offre">Offre</span></td>
-            <td>15,00 €</td>
-            <td>Lyon 1er</td>
-            <td>Cours</td>
-            <td>Mme Leroy</td>
-            <td>13/03/2025</td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Prêt perceuse</td>
-            <td class="td-desc">Je prête ma perceuse pour le week-end.</td>
-            <td><span class="badge badge-offre">Offre</span></td>
-            <td>0,00 €</td>
-            <td>Lyon 6e</td>
-            <td>Outillage</td>
-            <td>Mme Martin</td>
-            <td>14/03/2025</td>
-            <td><span class="badge badge-active">Validée</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Transport de meubles</td>
-            <td class="td-desc">Besoin d'aide pour déménager un canapé et une armoire.</td>
-            <td><span class="badge badge-demande">Demande</span></td>
-            <td>40,00 €</td>
-            <td>Villeurbanne</td>
-            <td>Déménagement</td>
-            <td>M. Petit</td>
-            <td>15/03/2025</td>
-            <td><span class="badge badge-cloture">Refusée</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
-            </td>
-          </tr>
+          {% for service in services %}
+            {% set membre    = membresIndex[service.idMembre_demandeur ?? 0] ?? null %}
+            {% set categorie = categoriesIndex[service.idCategorie ?? 0] ?? null %}
+            <tr>
+              <td style="font-weight: 500;">{{ service.titre ?? '—' }}</td>
+              <td style="max-width: 250px; white-space: normal; word-wrap: break-word;">{{ service.description ?? '—' }}</td>
+              <td>
+                {% if service.typeService == 'public' %}
+                  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #e3f2fd; color: #1976d2;">Public</span>
+                {% else %}
+                  <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; background: #f3e5f5; color: #7b1fa2;">Privé</span>
+                {% endif %}
+              </td>
+              <td style="text-align: right;">
+                {% if service.prixPropose is defined and service.prixPropose is not null %}
+                  {{ service.prixPropose|number_format(2, ',', ' ') }} €
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td>{{ service.adresseExecution ?? '—' }}</td>
+              <td>{{ categorie ? categorie.libelle : '—' }}</td>
+              <td>{{ membre ? membre.prenom ~ ' ' ~ membre.nom : '—' }}</td>
+              <td>{{ service.datePublication ? service.datePublication|date('d/m/Y') : '—' }}</td>
+              <td style="white-space: nowrap;">
+                <a href="{{ path('publication_valider', {id: service.idService}) }}"
+                   style="display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #4CAF50; color: white; border-radius: 0.5rem; text-decoration: none;"
+                   onclick="return confirm('Valider cette publication ?')">✅ Valider</a>
+                <a href="{{ path('publication_refuser', {id: service.idService}) }}"
+                   style="display: inline-block; padding: 0.4rem 0.8rem; margin: 0 0.2rem; background: #f44336; color: white; border-radius: 0.5rem; text-decoration: none;"
+                   onclick="return confirm('Refuser cette publication ?')">❌ Refuser</a>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="9" style="text-align: center; padding: 2rem; color: #888;">
+                Aucune demande de publication en attente.
+              </td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

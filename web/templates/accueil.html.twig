@@ -16,15 +16,15 @@
   <!-- STATS -->
   <section class="stats">
     <div class="stat-item">
-      <span class="stat-num">12</span>
+      <span class="stat-num">{{ nb_adhesions_en_attente }}</span>
       <span class="stat-label">Demandes d'adhésion en attente</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">5</span>
+      <span class="stat-num">{{ nb_publications_en_attente }}</span>
       <span class="stat-label">Publications à valider</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">3</span>
+      <span class="stat-num">{{ nb_forfaits }}</span>
       <span class="stat-label">Forfaits actifs</span>
     </div>
   </section>
@@ -45,15 +45,6 @@
         <span class="shortcut-arrow">→</span>
       </a>
 
-      <!-- <a href="/demande_adhésion" class="shortcut-card">
-        <div class="shortcut-icon">👥</div>
-        <div class="shortcut-body">
-          <p class="shortcut-title">Demandes d'adhésion</p>
-          <p class="shortcut-text">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
-        </div>
-        <span class="shortcut-arrow">→</span>
-      </a> -->
-
       <a href="{{ path('gestion_publication') }}" class="shortcut-card">
         <div class="shortcut-icon">📰</div>
         <div class="shortcut-body">
@@ -63,56 +54,25 @@
         <span class="shortcut-arrow">→</span>
       </a>
 
-      <!-- <a href="/publication_demande_adhésion" class="shortcut-card">
+      <a href="{{ path('demande_adhesion') }}" class="shortcut-card">
+        <div class="shortcut-icon">👥</div>
+        <div class="shortcut-body">
+          <p class="shortcut-title">Demandes d'adhésion</p>
+          <p class="shortcut-text">Validez ou refusez les demandes d'inscription des nouveaux membres.</p>
+        </div>
+        <span class="shortcut-arrow">→</span>
+      </a>
+
+      <a href="{{ path('demande_publication') }}" class="shortcut-card">
         <div class="shortcut-icon">📋</div>
         <div class="shortcut-body">
           <p class="shortcut-title">Demandes de publication</p>
           <p class="shortcut-text">Examinez et validez les demandes de publication soumises par les membres.</p>
         </div>
         <span class="shortcut-arrow">→</span>
-      </a> -->
+      </a>
 
-    </div>
-  </section>
 
-  <!-- ACTIVITÉ RÉCENTE -->
-  <section class="activity">
-    <h2 class="section-title">🕐 Activité récente</h2>
-    <p class="section-sub">Un aperçu des dernières demandes et événements sur la plateforme.</p>
-
-    <div class="activity-list">
-      <div class="activity-item">
-        <div class="activity-dot dot-green"></div>
-        <div class="activity-body">
-          <p class="activity-title">Nouvelle demande d'adhésion</p>
-          <p class="activity-sub">Marie Dupont a soumis une demande d'inscription</p>
-        </div>
-        <span class="activity-time">Il y a 5 min</span>
-      </div>
-      <div class="activity-item">
-        <div class="activity-dot dot-blue"></div>
-        <div class="activity-body">
-          <p class="activity-title">Publication en attente</p>
-          <p class="activity-sub">Jean Martin a soumis une demande de publication de service</p>
-        </div>
-        <span class="activity-time">Il y a 20 min</span>
-      </div>
-      <div class="activity-item">
-        <div class="activity-dot dot-orange"></div>
-        <div class="activity-body">
-          <p class="activity-title">Forfait modifié</p>
-          <p class="activity-sub">Le forfait "Premium" a été mis à jour</p>
-        </div>
-        <span class="activity-time">Il y a 1h</span>
-      </div>
-      <div class="activity-item">
-        <div class="activity-dot dot-green"></div>
-        <div class="activity-body">
-          <p class="activity-title">Adhésion validée</p>
-          <p class="activity-sub">La demande de Pierre Leroy a été acceptée</p>
-        </div>
-        <span class="activity-time">Il y a 2h</span>
-      </div>
     </div>
   </section>
 

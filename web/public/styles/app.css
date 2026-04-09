@@ -415,6 +415,10 @@ body { background-color: var(--vert); }
   background: var(--vert); padding: 2.5rem 2rem 2rem; text-align: center;
   min-height: 220px; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
+}.forfait-card-duree {
+  font-size: 0.82rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
 }
 
 .forfait-card--premium .forfait-card-header { background: var(--vert-tres-fonce); }
@@ -445,8 +449,10 @@ body { background-color: var(--vert); }
 
 /* Basculement cartes / tableau */
 .forfaits-desktop-only { display: block; }
-.forfaits-mobile-only  { display: none; }
 
+.accordion-row:hover { background: rgb(230,242,220); }
+.accordion-arrow { font-size: 0.75rem; color: var(--gris); margin-left: 0.3rem; }
+.accordion-content td { border-top: 1px dashed var(--vert-fonce); }
 /* ── PUBLICATIONS ── */
 .publications-section { padding: 3rem 4% 6rem; text-align: center; }
 
@@ -554,11 +560,9 @@ body { background-color: var(--vert); }
   .shortcuts-grid, .forfaits-cards-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr; }
   .forfaits-desktop-only { display: none; }
-  .forfaits-mobile-only  { display: block; }
   .form-row { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 901px) {
   .forfaits-desktop-only { display: block; }
-  .forfaits-mobile-only  { display: none; }
 }

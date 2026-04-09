@@ -9,105 +9,80 @@
   <section class="dashboard-hero">
     <div class="dashboard-hero-text">
       <h1 class="hero-title">Demandes d'<span>adhésion</span></h1>
-      <p class="hero-desc">Validez ou refusez les demandes d'inscription des nouveaux membres de la plateforme VoisinsConnectés.</p>
+      <p class="hero-desc">Validez ou refusez les demandes d'adhésion soumises par les membres.</p>
     </div>
   </section>
 
   {% for message in app.flashes('success') %}
-    <div class="flash-success" style="max-width:1100px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+    <div class="flash-success">✅ {{ message }}</div>
   {% endfor %}
 
   <section class="publications-section">
     <h2 class="section-title">Demandes en attente</h2>
-    <p class="section-sub">Liste des membres ayant soumis une demande d'adhésion à la plateforme.</p>
+    <p class="section-sub">Liste des demandes d’adhésion en attente de validation.</p>
 
     <div class="publications-wrapper">
       <table class="publications-table">
         <thead>
           <tr>
-            <th>Forfait souhaité</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Email</th>
-            <th>Téléphone</th>
-            <th>Adresse</th>
-            <th>Date demande</th>
-            <th>État</th>
+            <th>Membre</th>
+            <th>Forfait</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Statut</th>
             <th>Actions</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr>
-            <td><span class="badge plan-premium">Premium</span></td>
-            <td>Dupont</td>
-            <td>Marie</td>
-            <td>marie.dupont@email.com</td>
-            <td>06 12 34 56 78</td>
-            <td>Lyon 3e</td>
-            <td>01/03/2025</td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider la demande de Marie Dupont ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser la demande de Marie Dupont ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge plan-premium">Premium</span></td>
-            <td>Martin</td>
-            <td>Jean</td>
-            <td>jean.martin@email.com</td>
-            <td>07 23 45 67 89</td>
-            <td>Lyon 6e</td>
-            <td>03/03/2025</td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider la demande de Jean Martin ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser la demande de Jean Martin ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge plan-premium">Premium</span></td>
-            <td>Bernard</td>
-            <td>Sophie</td>
-            <td>sophie.bernard@email.com</td>
-            <td>06 34 56 78 90</td>
-            <td>Villeurbanne</td>
-            <td>05/03/2025</td>
-            <td><span class="badge badge-active">Validée</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider la demande de Sophie Bernard ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser la demande de Sophie Bernard ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge plan-premium">Premium</span></td>
-            <td>Leroy</td>
-            <td>Pierre</td>
-            <td>pierre.leroy@email.com</td>
-            <td>07 45 67 89 01</td>
-            <td>Lyon 2e</td>
-            <td>08/03/2025</td>
-            <td><span class="badge badge-cloture">Refusée</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider la demande de Pierre Leroy ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser la demande de Pierre Leroy ?')">❌ Refuser</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge plan-premium">Premium</span></td>
-            <td>Petit</td>
-            <td>Claire</td>
-            <td>claire.petit@email.com</td>
-            <td>06 56 78 90 12</td>
-            <td>Lyon 1er</td>
-            <td>10/03/2025</td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td class="td-actions">
-              <a href="#" class="btn-table btn-valider" onclick="return confirm('Valider la demande de Claire Petit ?')">✅ Valider</a>
-              <a href="#" class="btn-table btn-supprimer" onclick="return confirm('Refuser la demande de Claire Petit ?')">❌ Refuser</a>
-            </td>
-          </tr>
+
+          {% set hasPending = false %}
+
+          {% for adhesion in adhesions %}
+            {% if adhesion.statut == 'en_attente' %}
+              {% set hasPending = true %}
+
+              {% set membre = membresIndex[adhesion.idMembre] ?? null %}
+              {% set forfait = forfaitsIndex[adhesion.idForfait] ?? null %}
+
+              <tr>
+                <td>{{ membre ? membre.prenom ~ ' ' ~ membre.nom : '—' }}</td>
+                <td>{{ forfait ? forfait.nomForfait : '—' }}</td>
+                <td>{{ adhesion.dateDebut }}</td>
+                <td>{{ adhesion.dateFin }}</td>
+
+                <td>
+                  <span class="badge badge-attente">En attente</span>
+                </td>
+
+                <td class="td-actions">
+                  <a href="{{ path('adhesion_valider', {id: adhesion.idAdhesion}) }}"
+                     class="btn-table btn-valider"
+                     onclick="return confirm('Valider cette adhésion ?')">
+                     ✅ Valider
+                  </a>
+
+                  <a href="{{ path('adhesion_refuser', {id: adhesion.idAdhesion}) }}"
+                     class="btn-table btn-supprimer"
+                     onclick="return confirm('Refuser cette adhésion ?')">
+                     ❌ Refuser
+                  </a>
+                </td>
+              </tr>
+
+            {% endif %}
+          {% endfor %}
+
+          {% if not hasPending %}
+            <tr>
+              <td colspan="6" style="text-align:center; padding:2rem; color:var(--gris);">
+                Aucune demande d’adhésion en attente.
+              </td>
+            </tr>
+          {% endif %}
+
         </tbody>
+
       </table>
     </div>
   </section>

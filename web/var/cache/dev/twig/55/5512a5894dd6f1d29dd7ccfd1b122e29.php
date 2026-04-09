@@ -58,10 +58,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         // line 5
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
-        <link rel=\"icon\" href=\"";
-        // line 6
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("voisins_connectes_arrondi.png"), "html", null, true);
-        yield "\">
+        <link rel=\"icon\" href=\"/images/voisins_connectes_arrondi.png\">
         ";
         // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
@@ -75,10 +72,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
     <body>
         <nav class=\"navbar-floating\">
         <div class=\"navbar-links\">
-            <img src=\"";
-        // line 18
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("voisins_connectes_arrondi.png"), "html", null, true);
-        yield "\" alt=\"Logo\" class=\"logo\">
+            <img src=\"/images/voisins_connectes_arrondi.png\" alt=\"Logo\" class=\"logo\">
 
             <a href=\"";
         // line 20
@@ -173,7 +167,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
                 </div>
             </div>
 
-            <a href=\"";
+            <!--<a href=\"";
         // line 57
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inscription");
         yield "\"
@@ -186,7 +180,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         }
         yield "\">
             Inscriptions
-            </a>
+            </a>-->
 
             <a href=\"";
         // line 62
@@ -248,9 +242,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 8
-        yield "            <link rel=\"stylesheet\" href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/app.css"), "html", null, true);
-        yield "\">
+        yield "            <link rel=\"stylesheet\" href=\"/styles/app.css\">
         ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -301,7 +293,6 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "importmap"));
 
-        yield $this->env->getRuntime('Symfony\Bridge\Twig\Extension\ImportMapRuntime')->importmap("app");
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -354,7 +345,7 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  315 => 67,  292 => 12,  281 => 13,  278 => 12,  265 => 11,  251 => 8,  238 => 7,  216 => 5,  203 => 68,  201 => 67,  193 => 62,  182 => 58,  178 => 57,  167 => 51,  163 => 50,  155 => 47,  151 => 46,  140 => 42,  128 => 35,  124 => 34,  116 => 31,  112 => 30,  101 => 26,  89 => 21,  85 => 20,  80 => 18,  74 => 14,  72 => 11,  69 => 10,  67 => 7,  63 => 6,  59 => 5,  53 => 1,);
+        return array (  306 => 67,  284 => 12,  273 => 13,  270 => 12,  257 => 11,  245 => 8,  232 => 7,  210 => 5,  197 => 68,  195 => 67,  187 => 62,  176 => 58,  172 => 57,  161 => 51,  157 => 50,  149 => 47,  145 => 46,  134 => 42,  122 => 35,  118 => 34,  110 => 31,  106 => 30,  95 => 26,  83 => 21,  79 => 20,  71 => 14,  69 => 11,  66 => 10,  64 => 7,  59 => 5,  53 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -364,19 +355,19 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}{% endblock %}</title>
-        <link rel=\"icon\" href=\"{{ asset('voisins_connectes_arrondi.png') }}\">
+        <link rel=\"icon\" href=\"/images/voisins_connectes_arrondi.png\">
         {% block stylesheets %}
-            <link rel=\"stylesheet\" href=\"{{ asset('styles/app.css') }}\">
+            <link rel=\"stylesheet\" href=\"/styles/app.css\">
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {% block importmap %}{% endblock %}
         {% endblock %}
     </head>
     <body>
         <nav class=\"navbar-floating\">
         <div class=\"navbar-links\">
-            <img src=\"{{ asset('voisins_connectes_arrondi.png') }}\" alt=\"Logo\" class=\"logo\">
+            <img src=\"/images/voisins_connectes_arrondi.png\" alt=\"Logo\" class=\"logo\">
 
             <a href=\"{{ path('index') }}\"
             class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/accueil' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">
@@ -415,10 +406,10 @@ class __TwigTemplate_5b3baef0749173f387c34d3ddfa1062f extends Template
                 </div>
             </div>
 
-            <a href=\"{{ path('inscription') }}\"
+            <!--<a href=\"{{ path('inscription') }}\"
             class=\"nav-btn {% if app.request.pathinfo == '/voisins_connecte/inscription' %}nav-btn--active{% else %}nav-btn--inactive{% endif %}\">
             Inscriptions
-            </a>
+            </a>-->
 
             <a href=\"{{ path('deconnexion') }}\" class=\"nav-btn nav-btn--deconnexion\">
                 Déconnexion

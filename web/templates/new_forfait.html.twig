@@ -1,0 +1,173 @@
+<div class="home">
+
+  <!-- HERO -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-text">
+      <h1 class="hero-title">{{ formTitle }}</h1>
+      <p class="hero-desc">{{ formSubtitle }}</p>
+    </div>
+  </section>
+
+  {% for message in app.flashes('success') %}
+    <div class="flash-success" style="max-width:600px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
+  {% endfor %}
+  {% for message in app.flashes('error') %}
+    <div class="flash-error" style="max-width:600px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: #fee2e2; color: #dc2626; border-radius: 1rem; font-weight: 500;">❌ {{ message }}</div>
+  {% endfor %}
+
+  <form method="POST" action="{{ formAction }}" id="forfaitForm">
+    <div class="forfaits-wrapper">
+      <table class="forfaits-table">
+        <thead>
+          <tr>
+            <th class="th-label"></th>
+            <th class="th-plan" style="min-width: 220px;">
+              <input type="text" name="nomForfait" value="{{ forfait.nomForfait|default('') }}" class="form-input" style="margin: 0.5rem 0; text-align:center;" placeholder="Nom du forfait" required>
+              <textarea name="description" class="form-input" style="margin: 0.5rem 0; width: 100%; height: 80px; resize: vertical;" placeholder="Description du forfait">{{ forfait.description|default('') }}</textarea>
+              <div style="display:flex; gap:0.5rem; align-items:center; justify-content:center; margin-top:0.3rem;">
+                <input type="number" name="prix" id="prix" value="{{ forfait.prix|default(0) }}" step="0.01" min="0" class="form-input" style="width:80px; text-align:center;" required>
+                <span style="color:var(--gris); font-size:0.85rem;">€ /</span>
+                <select name="duree" id="duree" class="form-input" style="width:90px;">
+                  <option value="gratuit" {% if forfait.duree|default(0) == 0 %}selected{% endif %}>gratuit</option>
+                  <option value="mois"    {% if forfait.duree|default(0) == 30 %}selected{% endif %}>mois</option>
+                  <option value="an"      {% if forfait.duree|default(0) == 365 %}selected{% endif %}>an</option>
+                </select>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="category"><td colspan="2">🔧 Proposer des services</td></tr>
+          <tr>
+            <td>Paramétrage</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_parametrage" class="toggle-checkbox" value="1" {% if forfait.fonc_parametrage == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Périmètre d'intervention</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_perimetreIntervention" class="toggle-checkbox" value="1" {% if forfait.fonc_perimetreIntervention == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Notifications « Nouvelles demandes »</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_notifications" class="toggle-checkbox" value="1" {% if forfait.fonc_notifications == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+
+          <tr class="category"><td colspan="2">🙋 Répondre aux demandes</td></tr>
+          <tr>
+            <td>Location de matériel</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_locationMateriel" class="toggle-checkbox" value="1" {% if forfait.fonc_locationMateriel == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Prestation de service</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_prestationService" class="toggle-checkbox" value="1" {% if forfait.fonc_prestationService == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+
+          <tr class="category"><td colspan="2">👤 Profil utilisateur</td></tr>
+          <tr>
+            <td>Numéro de téléphone sur le profil</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_numeroProfil" class="toggle-checkbox" value="1" {% if forfait.fonc_numeroProfil == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Photos des réalisations sur le profil</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_photosProfil" class="toggle-checkbox" value="1" {% if forfait.fonc_photosProfil == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+
+          <tr class="category"><td colspan="2">🎧 Assistance</td></tr>
+          <tr>
+            <td>Accompagnement personnalisé et prioritaire</td>
+            <td>
+              <label class="toggle-label">
+                <input type="checkbox" name="fonc_accompagnementPrioritaire" class="toggle-checkbox" value="1" {% if forfait.fonc_accompagnementPrioritaire == '1' %}checked{% endif %}>
+                <span class="toggle-switch"></span>
+              </label>
+            </td>
+          </tr>
+
+          <tr class="category"><td colspan="2"></td></tr>
+          <tr>
+            <td style="text-align:left;">
+              <a href="{{ cancelPath }}" class="btn-table btn-annuler">Retour</a>
+            </td>
+            <td style="text-align:center; padding: 1rem;">
+              <button type="submit" class="btn-primary">{{ submitLabel }}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+
+</div>
+
+<script>
+  const dureeSelect = document.getElementById('duree');
+  const prixInput = document.getElementById('prix');
+
+  if (dureeSelect && prixInput) {
+    const togglePrix = () => {
+      if (dureeSelect.value === 'gratuit') {
+        prixInput.value = '0';
+        prixInput.readOnly = true;
+      } else {
+        prixInput.readOnly = false;
+      }
+    };
+
+    dureeSelect.addEventListener('change', togglePrix);
+    togglePrix();
+  }
+
+  const form = document.getElementById('forfaitForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      const nom = document.querySelector('input[name="nomForfait"]').value.trim();
+      if (nom === '') {
+        e.preventDefault();
+        alert('Veuillez saisir un nom de forfait');
+        return false;
+      }
+      const prix = parseFloat(prixInput.value);
+      if (isNaN(prix) || prix < 0) {
+        e.preventDefault();
+        alert('Veuillez saisir un prix valide');
+        return false;
+      }
+      return true;
+    });
+  }
+</script>

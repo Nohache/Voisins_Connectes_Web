@@ -39,86 +39,54 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Taille de haies</td>
-            <td class="td-desc">Besoin d'un coup de main pour tailler mes haies de 10m.</td>
-            <td><span class="badge badge-demande">Demande</span></td>
-            <td><span class="badge badge-active">Active</span></td>
-            <td>01/03/2025</td>
-            <td>30/03/2025</td>
-            <td>25,00 €</td>
-            <td>Lyon 3e</td>
-            <td>Jardinage</td>
-            <td>M. Dupont</td>
-            <td class="td-actions">
-              <a href="{{ path('publication_modifier', {id: 1}) }}" class="btn-table btn-modifier">✏️</a>
-              <a href="{{ path('publication_supprimer', {id: 1}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Prêt perceuse</td>
-            <td class="td-desc">Je prête ma perceuse pour le week-end.</td>
-            <td><span class="badge badge-offre">Offre</span></td>
-            <td><span class="badge badge-active">Active</span></td>
-            <td>05/03/2025</td>
-            <td>15/03/2025</td>
-            <td>0,00 €</td>
-            <td>Lyon 6e</td>
-            <td>Outillage</td>
-            <td>Mme Martin</td>
-            <td class="td-actions">
-              <a href="{{ path('publication_modifier', {id: 2}) }}" class="btn-table btn-modifier">✏️</a>
-              <a href="{{ path('publication_supprimer', {id: 2}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Garde de chat</td>
-            <td class="td-desc">Cherche quelqu'un pour garder mon chat pendant 1 semaine.</td>
-            <td><span class="badge badge-demande">Demande</span></td>
-            <td><span class="badge badge-cloture">Clôturée</span></td>
-            <td>10/02/2025</td>
-            <td>17/02/2025</td>
-            <td>50,00 €</td>
-            <td>Lyon 2e</td>
-            <td>Animaux</td>
-            <td>M. Bernard</td>
-            <td class="td-actions">
-              <a href="{{ path('publication_modifier', {id: 3}) }}" class="btn-table btn-modifier">✏️</a>
-              <a href="{{ path('publication_supprimer', {id: 3}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Cours de guitare</td>
-            <td class="td-desc">Propose des cours de guitare pour débutants, 1h par semaine.</td>
-            <td><span class="badge badge-offre">Offre</span></td>
-            <td><span class="badge badge-attente">En attente</span></td>
-            <td>12/03/2025</td>
-            <td>—</td>
-            <td>15,00 €</td>
-            <td>Lyon 1er</td>
-            <td>Cours</td>
-            <td>Mme Leroy</td>
-            <td class="td-actions">
-              <a href="{{ path('publication_modifier', {id: 4}) }}" class="btn-table btn-modifier">✏️</a>
-              <a href="{{ path('publication_supprimer', {id: 4}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
-            </td>
-          </tr>
-          <tr>
-            <td>Transport de meubles</td>
-            <td class="td-desc">Besoin d'aide pour déménager un canapé et une armoire.</td>
-            <td><span class="badge badge-demande">Demande</span></td>
-            <td><span class="badge badge-active">Active</span></td>
-            <td>14/03/2025</td>
-            <td>21/03/2025</td>
-            <td>40,00 €</td>
-            <td>Villeurbanne</td>
-            <td>Déménagement</td>
-            <td>M. Petit</td>
-            <td class="td-actions">
-              <a href="{{ path('publication_modifier', {id: 5}) }}" class="btn-table btn-modifier">✏️</a>
-              <a href="{{ path('publication_supprimer', {id: 5}) }}" class="btn-table btn-supprimer" onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
-            </td>
-          </tr>
+          {% for service in services %}
+            {% set membre    = membresIndex[service.idMembre_demandeur ?? 0]  ?? null %}
+            {% set categorie = categoriesIndex[service.idCategorie ?? 0]      ?? null %}
+            <tr>
+              <td>{{ service.titre ?? '—' }}</td>
+              <td class="td-desc">{{ service.description ?? '—' }}</td>
+              <td>
+                {% if service.typeService == 'public' %}
+                  <span class="badge badge-offre">Public</span>
+                {% else %}
+                  <span class="badge badge-demande">Privé</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if service.etatService == 'publiee' %}
+                  <span class="badge badge-active">Publiée</span>
+                {% elseif service.etatService == 'en_cours' %}
+                  <span class="badge badge-attente">En cours</span>
+                {% else %}
+                  <span class="badge badge-cloture">{{ service.etatService ?? '—' }}</span>
+                {% endif %}
+              </td>
+              <td>{{ service.datePublication ?? '—' }}</td>
+              <td>{{ service.dateCloture ?? '—' }}</td>
+              <td>
+                {% if service.prixPropose is defined %}
+                  {{ service.prixPropose|number_format(2, ',', ' ') }} €
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td>{{ service.adresseExecution ?? '—' }}</td>
+              <td>{{ categorie.nomCategorie ?? '—' }}</td>
+              <td>{{ membre ? membre.prenom ~ ' ' ~ membre.nom : '—' }}</td>
+              <td class="td-actions">
+                <a href="{{ path('publication_modifier', {id: service.idService}) }}" class="btn-table btn-modifier">✏️</a>
+                <a href="{{ path('publication_supprimer', {id: service.idService}) }}"
+                   class="btn-table btn-supprimer"
+                   onclick="return confirm('Supprimer cette publication ?')">🗑️</a>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="11" style="text-align:center; color: var(--gris); padding: 2rem;">
+                Aucune publication pour le moment.
+              </td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

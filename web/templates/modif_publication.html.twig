@@ -1,123 +1,165 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Modifier la publication{% endblock %}
+{% block title %}Modifier une publication{% endblock %}
 
 {% block body %}
 
-{# Données fixes — à remplacer par des variables Doctrine plus tard #}
-{% set publications = {
-  1: { titre: 'Taille de haies',      description: "Besoin d'un coup de main pour tailler mes haies de 10m.", typeService: 'Demande', etatService: 'Active',     datePublication: '01/03/2025', dateCloture: '30/03/2025', prixPropose: '25,00 €', adresseExecution: 'Lyon 3e',      categorie: 'Jardinage',    membre: 'M. Dupont'  },
-  2: { titre: 'Prêt perceuse',        description: 'Je prête ma perceuse pour le week-end.',                  typeService: 'Offre',   etatService: 'Active',     datePublication: '05/03/2025', dateCloture: '15/03/2025', prixPropose: '0,00 €',  adresseExecution: 'Lyon 6e',      categorie: 'Outillage',    membre: 'Mme Martin' },
-  3: { titre: 'Garde de chat',        description: "Cherche quelqu'un pour garder mon chat pendant 1 semaine.", typeService: 'Demande', etatService: 'Clôturée', datePublication: '10/02/2025', dateCloture: '17/02/2025', prixPropose: '50,00 €', adresseExecution: 'Lyon 2e',      categorie: 'Animaux',      membre: 'M. Bernard' },
-  4: { titre: 'Cours de guitare',     description: 'Propose des cours de guitare pour débutants, 1h par semaine.', typeService: 'Offre', etatService: 'En attente', datePublication: '12/03/2025', dateCloture: '—',         prixPropose: '15,00 €', adresseExecution: 'Lyon 1er',     categorie: 'Cours',        membre: 'Mme Leroy'  },
-  5: { titre: 'Transport de meubles', description: "Besoin d'aide pour déménager un canapé et une armoire.",  typeService: 'Demande', etatService: 'Active',     datePublication: '14/03/2025', dateCloture: '21/03/2025', prixPropose: '40,00 €', adresseExecution: 'Villeurbanne', categorie: 'Déménagement', membre: 'M. Petit'   }
-} %}
-
-{% set pub = publications[id] %}
-
 <div class="home">
 
-  <!-- HERO -->
-  <section class="dashboard-hero">
-    <div class="dashboard-hero-text">
-      <h1 class="hero-title">Modifier la <span>publication</span></h1>
-      <p class="hero-desc">Modifiez les informations de cette publication.</p>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="dashboard-hero">
+        <div class="dashboard-hero-text">
+            <h1 class="hero-title">Modifier la <span>publication</span></h1>
+            <p class="hero-desc">Ajustez les informations de cette publication.</p>
+        </div>
+    </section>
 
-  <section class="publications-section">
+    <section class="publications-section">
 
-    {% for message in app.flashes('success') %}
-      <div class="flash-success" style="max-width:700px; margin: 0 auto 1rem; padding: 0.8rem 1.5rem; background: var(--vert); color: var(--vert-tres-fonce); border-radius: 1rem; font-weight: 500;">✅ {{ message }}</div>
-    {% endfor %}
+        <!-- FLASH MESSAGES -->
+        {% for message in app.flashes('success') %}
+            <div class="flash-success">✅ {{ message }}</div>
+        {% endfor %}
 
-    <form method="POST" action="{{ path('publication_modifier', {id: id}) }}">
-      <div class="forfaits-wrapper" style="max-width: 700px; margin: 0 auto;">
-        <table class="forfaits-table">
-          <thead>
-            <tr>
-              <th class="th-label">Champ</th>
-              <th class="th-plan">Valeur</th>
-            </tr>
-          </thead>
-          <tbody>
+        {% for message in app.flashes('error') %}
+            <div class="flash-error">❌ {{ message }}</div>
+        {% endfor %}
 
-            <tr class="category"><td colspan="2">📋 Informations générales</td></tr>
+        <!-- FORMULAIRE -->
+        <form method="POST" action="{{ path('publication_modifier', {id: id}) }}">
+            <div class="forfaits-wrapper">
 
-            <tr>
-              <td>Titre</td>
-              <td><input type="text" name="titre" value="{{ pub.titre }}" class="form-input"></td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td><textarea name="description" class="form-textarea" rows="3">{{ pub.description }}</textarea></td>
-            </tr>
-            <tr>
-              <td>Type de service</td>
-              <td>
-                <select name="typeService" class="form-input">
-                  <option value="Demande" {% if pub.typeService == 'Demande' %}selected{% endif %}>Demande</option>
-                  <option value="Offre"   {% if pub.typeService == 'Offre'   %}selected{% endif %}>Offre</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>État</td>
-              <td>
-                <select name="etatService" class="form-input">
-                  <option value="Active"     {% if pub.etatService == 'Active'     %}selected{% endif %}>Active</option>
-                  <option value="En attente" {% if pub.etatService == 'En attente' %}selected{% endif %}>En attente</option>
-                  <option value="Clôturée"   {% if pub.etatService == 'Clôturée'   %}selected{% endif %}>Clôturée</option>
-                </select>
-              </td>
-            </tr>
+                <table class="forfaits-table">
+                    <thead>
+                        <tr>
+                            <th class="th-label">Champ</th>
+                            <th class="th-plan">Valeur</th>
+                        </tr>
+                    </thead>
 
-            <tr class="category"><td colspan="2">📅 Dates & Prix</td></tr>
+                    <tbody>
 
-            <tr>
-              <td>Date de publication</td>
-              <td><input type="text" name="datePublication" value="{{ pub.datePublication }}" class="form-input"></td>
-            </tr>
-            <tr>
-              <td>Date de clôture</td>
-              <td><input type="text" name="dateCloture" value="{{ pub.dateCloture }}" class="form-input"></td>
-            </tr>
-            <tr>
-              <td>Prix proposé</td>
-              <td><input type="text" name="prixPropose" value="{{ pub.prixPropose }}" class="form-input"></td>
-            </tr>
+                        <!-- SECTION : Informations générales -->
+                        <tr class="category">
+                            <td colspan="2">📋 Informations générales</td>
+                        </tr>
 
-            <tr class="category"><td colspan="2">📍 Localisation & Catégorie</td></tr>
+                        <tr>
+                            <td>Titre</td>
+                            <td>
+                                <input type="text" name="titre" value="{{ service.titre }}" class="form-input" required>
+                            </td>
+                        </tr>
 
-            <tr>
-              <td>Adresse d'exécution</td>
-              <td><input type="text" name="adresseExecution" value="{{ pub.adresseExecution }}" class="form-input"></td>
-            </tr>
-            <tr>
-              <td>Catégorie</td>
-              <td><input type="text" name="categorie" value="{{ pub.categorie }}" class="form-input"></td>
-            </tr>
-            <tr>
-              <td>Membre</td>
-              <td><input type="text" name="membre" value="{{ pub.membre }}" class="form-input"></td>
-            </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>
+                                <textarea name="description" class="form-textarea" rows="4">{{ service.description }}</textarea>
+                            </td>
+                        </tr>
 
-            <!-- Boutons -->
-            <tr class="category"><td colspan="2"></td></tr>
-            <tr>
-                <td style="text-align:left;">
-                    <a href="{{ path('gestion_publication') }}" class="btn-table btn-annuler">Annuler</a>
-                </td>
-                <td style="text-align:center;">
-                    <button type="submit" class="btn-table btn-modifier">💾 Enregistrer</button>
-                </td>
-            </tr>
+                        <tr>
+                            <td>Type de service</td>
+                            <td>
+                                <select name="typeService" class="form-input">
+                                    <option value="public" {% if service.typeService == 'public' %}selected{% endif %}>Public</option>
+                                    <option value="prive"  {% if service.typeService == 'prive'  %}selected{% endif %}>Privé</option>
+                                </select>
+                            </td>
+                        </tr>
 
-          </tbody>
-        </table>
-      </div>
-    </form>
-  </section>
+                        <tr>
+                            <td>État</td>
+                            <td>
+                                <select name="etatService" class="form-input">
+                                    <option value="publiee"    {% if service.etatService == 'publiee'    %}selected{% endif %}>Publiée</option>
+                                    <option value="en_cours"   {% if service.etatService == 'en_cours'   %}selected{% endif %}>En cours</option>
+                                    <option value="refusee"    {% if service.etatService == 'refusee'    %}selected{% endif %}>Refusée</option>
+                                    <option value="depubliee"  {% if service.etatService == 'depubliee'  %}selected{% endif %}>Dépubliée</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Dates & Prix -->
+                        <tr class="category">
+                            <td colspan="2">📅 Dates & Prix</td>
+                        </tr>
+
+                        <tr>
+                            <input type="date" name="datePublication" 
+                                value="{{ service.datePublication ? service.datePublication|date('Y-m-d') : '' }}" 
+                                class="form-input">
+                        </tr>
+
+                        <tr>
+                            <td>Date de clôture</td>
+                            <td>
+                                <input type="date" name="dateCloture" value="{{ service.dateCloture }}" class="form-input">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Prix proposé</td>
+                            <td>
+                                <input type="number" step="0.01" min="0" name="prixPropose" value="{{ service.prixPropose }}" class="form-input">
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Localisation & Catégorie -->
+                        <tr class="category">
+                            <td colspan="2">📍 Localisation & Catégorie</td>
+                        </tr>
+
+                        <tr>
+                            <td>Adresse d'exécution</td>
+                            <td>
+                                <input type="text" name="adresseExecution" value="{{ service.adresseExecution }}" class="form-input">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Catégorie</td>
+                            <td>
+                                <select name="idCategorie" class="form-input">
+                                    <option value="">-- Sélectionner une catégorie --</option>
+                                    {% for cat in categories %}
+                                        <option value="{{ cat.idCategorie }}" {% if cat.idCategorie == service.idCategorie %}selected{% endif %}>
+                                            {{ cat.libelle }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Membre</td>
+                            <td>
+                                <input type="text" class="form-input" value="
+                                    {{ membresIndex[service.idMembre_demandeur].prenom ~ ' ' ~ membresIndex[service.idMembre_demandeur].nom }}
+                                " readonly>
+                            </td>
+                        </tr>
+
+                        <!-- SECTION : Boutons -->
+                        <tr class="category"><td colspan="2"></td></tr>
+
+                        <tr>
+                            <td style="text-align:left;">
+                                <a href="{{ path('gestion_publication') }}" class="btn-table btn-annuler">Annuler</a>
+                            </td>
+                            <td style="text-align:center;">
+                                <button type="submit" class="btn-table btn-modifier">💾 Enregistrer</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </form>
+
+    </section>
 
 </div>
+
 {% endblock %}
